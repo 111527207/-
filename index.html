@@ -1,18 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-    <title>國考準備筆記</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>國考準備筆記</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family: "Microsoft JhengHei", sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #9face6);
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:30px;
+    }
+
+    .container{
+        width:100%;
+        max-width:900px;
+        background:white;
+        border-radius:20px;
+        padding:40px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1{
+        text-align:center;
+        color:#2c3e50;
+        margin-bottom:35px;
+        font-size:2.5rem;
+    }
+
+    .subtitle{
+        text-align:center;
+        color:#666;
+        margin-bottom:30px;
+    }
+
+    .menu{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:20px;
+    }
+
+    .card{
+        background:#f8f9fc;
+        border-radius:15px;
+        padding:25px;
+        text-decoration:none;
+        color:#2c3e50;
+        transition:all 0.3s ease;
+        border:1px solid #e5e7eb;
+    }
+
+    .card:hover{
+        transform:translateY(-5px);
+        box-shadow:0 10px 20px rgba(0,0,0,0.12);
+        background:#eef5ff;
+    }
+
+    .icon{
+        font-size:2rem;
+        margin-bottom:15px;
+    }
+
+    .title{
+        font-size:1.1rem;
+        font-weight:bold;
+        margin-bottom:8px;
+    }
+
+    .description{
+        color:#666;
+        font-size:0.9rem;
+        line-height:1.5;
+    }
+
+    footer{
+        margin-top:35px;
+        text-align:center;
+        color:#888;
+        font-size:0.85rem;
+    }
+</style>
+
 </head>
 <body>
 
-<h1>選擇頁面</h1>
+<div class="container">
 
-<ul>
-    <li><a href="DSM5TR_國考DSM綜整筆記.html">DSM5TR_國考DSM綜整筆記</a></li>
-    <li><a href="DSM5TR_盛行率完整參考表.html">DSM5TR_盛行率完整參考表</a></li>
-    <li><a href="神經發展障礙症.html">神經發展障礙症</a></li>
-    <li><a href="思覺失調類群_DSM5整理.html">思覺失調類群</a></li>
-</ul>
+    <h1>📚 臨床心理師國考筆記</h1>
+
+    <div class="subtitle">
+        DSM-5-TR 重點整理與各疾患快速查閱
+    </div>
+
+    <div class="menu">
+
+        <a class="card" href="DSM5TR_國考DSM綜整筆記.html">
+            <div class="icon">🧠</div>
+            <div class="title">DSM-5-TR 國考綜整筆記</div>
+            <div class="description">
+                國考常考重點、診斷準則與比較整理。
+            </div>
+        </a>
+
+        <a class="card" href="DSM5TR_盛行率完整參考表.html">
+            <div class="icon">📊</div>
+            <div class="title">DSM-5-TR 盛行率表</div>
+            <div class="description">
+                各疾患盛行率與國考數據整理。
+            </div>
+        </a>
+
+        <a class="card" href="神經發展障礙症.html">
+            <div class="title">神經發展障礙症</div>
+            </div>
+        </a>
+
+        <a class="card" href="思覺失調類群_DSM5整理.html">
+            <div class="title">思覺失調類群</div>
+            </div>
+        </a>
+
+    </div>
+
+    <footer>
+        Clinical Psychology Exam Notes © 2026
+    </footer>
+
+</div>
 
 </body>
 </html>
