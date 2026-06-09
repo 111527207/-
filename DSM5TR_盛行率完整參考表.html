@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSM-5-TR 盛行率完整參考表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f1a;--bg2:#111827;--bg3:#1a2235;--surface:#1e2a3d;--surface2:#243048;
+  --border:#2a3a55;--accent:#4f8ef7;--accent2:#7c5cfc;--green:#22c55e;--yellow:#f59e0b;
+  --red:#ef4444;--cyan:#06b6d4;--pink:#ec4899;--orange:#f97316;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#4b5a72;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
+header{background:linear-gradient(135deg,#0b0f1a,#131d30);border-bottom:1px solid var(--border);padding:1.5rem 2rem;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.header-inner{max-width:1600px;margin:0 auto}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:.12em;color:var(--green);border:1px solid var(--green);padding:.12rem .5rem;border-radius:3px;margin-bottom:.4rem;text-transform:uppercase}
+h1{font-family:'Noto Serif TC',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:900;background:linear-gradient(90deg,#e2e8f0,#4f8ef7,#7c5cfc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.subtitle{color:var(--text3);font-size:.75rem;font-family:'JetBrains Mono',monospace;margin-top:.3rem}
+nav{max-width:1600px;margin:.8rem auto 0;display:flex;flex-wrap:wrap;gap:.25rem}
+.tab-btn{padding:.3rem .75rem;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:.75rem;font-family:'Noto Sans TC',sans-serif;transition:all .2s;white-space:nowrap}
+.tab-btn:hover{border-color:var(--accent);color:var(--text);background:rgba(79,142,247,.08)}
+.tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+main{max-width:1600px;margin:0 auto;padding:1.5rem 2rem}
+.section{display:none}.section.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-family:'Noto Serif TC',serif;font-size:1.2rem;font-weight:900;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:1rem}
+.card-title{font-weight:700;font-size:.95rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+table.prev{width:100%;border-collapse:collapse;font-size:.83rem}
+table.prev th{background:var(--surface);padding:.5rem .8rem;text-align:left;font-weight:600;color:var(--text2);font-size:.73rem;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--border);white-space:nowrap}
+table.prev td{padding:.48rem .8rem;border-bottom:1px solid rgba(42,58,85,.5);vertical-align:top;line-height:1.55}
+table.prev tr:last-child td{border-bottom:none}
+table.prev tr:hover td{background:rgba(79,142,247,.04)}
+.num{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--accent);white-space:nowrap}
+.num-green{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)}
+.num-yellow{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--yellow)}
+.num-red{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--red)}
+.num-pink{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--pink)}
+.pill{display:inline-block;padding:.1rem .45rem;border-radius:20px;font-size:.68rem;font-weight:700;font-family:'JetBrains Mono',monospace;text-transform:uppercase;white-space:nowrap}
+.pill-f{background:rgba(239,68,68,.15);color:#f87171}
+.pill-m{background:rgba(79,142,247,.15);color:#7dd3fc}
+.pill-e{background:rgba(34,197,94,.15);color:#4ade80}
+.pill-n{background:rgba(148,163,184,.15);color:#94a3b8}
+.note{font-size:.78rem;color:var(--text3);font-style:italic;margin-top:.3rem}
+.freq-box{background:var(--surface);border-left:3px solid var(--yellow);border-radius:0 7px 7px 0;padding:.7rem 1rem;font-size:.83rem;margin-bottom:.7rem}
+.freq-box .flabel{font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--yellow);text-transform:uppercase;margin-bottom:.3rem}
+strong{color:#fff;font-weight:700}
+code{font-family:'JetBrains Mono',monospace;background:var(--surface);padding:.08rem .35rem;border-radius:3px;font-size:.85em;color:var(--green)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+footer{text-align:center;padding:1.5rem;color:var(--text3);font-size:.73rem;border-top:1px solid var(--border);margin-top:2rem}
+.alert{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:7px;padding:.65rem .9rem;font-size:.82rem;color:#fcd34d;margin-bottom:1rem}
+</style>
+</head>
+<body>
+<header>
+<div class="header-inner">
+  <div class="badge">DSM-5-TR · APA 2022 · 盛行率完整參考</div>
+  <h1>DSM-5-TR 各疾患盛行率完整參考表</h1>
+  <div class="subtitle">終生 / 12個月 / 性別 / 年齡盛行率 + 診斷準則中的頻率標準</div>
+  <nav>
+    <button class="tab-btn active" onclick="T('freq')">📊 診斷頻率準則</button>
+    <button class="tab-btn" onclick="T('neurodev')">🧩 神經發展</button>
+    <button class="tab-btn" onclick="T('psychosis')">🧠 思覺失調光譜</button>
+    <button class="tab-btn" onclick="T('mood')">🌊 雙相&amp;憂鬱</button>
+    <button class="tab-btn" onclick="T('anxiety')">😰 焦慮</button>
+    <button class="tab-btn" onclick="T('ocd')">🔄 OCD相關</button>
+    <button class="tab-btn" onclick="T('trauma')">⚡ 創傷&amp;解離</button>
+    <button class="tab-btn" onclick="T('somatic')">🩺 身體症狀</button>
+    <button class="tab-btn" onclick="T('eating')">🍽 飲食&amp;排泄</button>
+    <button class="tab-btn" onclick="T('sleep')">💤 睡眠</button>
+    <button class="tab-btn" onclick="T('sexual')">💊 性功能&amp;性別</button>
+    <button class="tab-btn" onclick="T('disruptive')">⚡ 破壞性行為</button>
+    <button class="tab-btn" onclick="T('substance')">💉 物質使用</button>
+    <button class="tab-btn" onclick="T('neuro')">🔬 神經認知</button>
+    <button class="tab-btn" onclick="T('personality')">🪞 人格疾患</button>
+    <button class="tab-btn" onclick="T('paraphilic')">🔍 性偏好&amp;其他</button>
+  </nav>
+</div>
+</header>
+
+<main>
+
+<!-- ══ FREQ ══ -->
+<section class="section active" id="sec-freq">
+<div class="section-title"><span class="dot" style="background:var(--yellow)"></span>診斷準則中的頻率標準 — 國考必背</div>
+<div class="alert">⚡ 這些是 DSM-5-TR 診斷準則中明定的「頻率要求」，不只是 Duration，還包含症狀發生頻率。</div>
+
+<div class="two-col">
+<div class="card">
+<div class="card-title">🌊 情緒疾患頻率準則</div>
+<div class="freq-box">
+  <div class="flabel">躁狂發作 Mania (Bipolar I)</div>
+  持續<strong>≥ 1 週</strong>，<strong>多數時間</strong>（most of the day），<strong>幾乎每天</strong>（nearly every day）<br>
+  Criterion B：≥ 3 症狀（若僅易怒：≥ 4 症狀）
+</div>
+<div class="freq-box">
+  <div class="flabel">輕躁發作 Hypomania (Bipolar II)</div>
+  持續<strong>≥ 4 連續天</strong>，多數時間，幾乎每天<br>
+  Criterion B：≥ 3 症狀（若僅易怒：≥ 4 症狀）
+</div>
+<div class="freq-box">
+  <div class="flabel">重鬱發作 MDE</div>
+  持續<strong>≥ 2 週</strong>，9症狀中<strong>≥ 5 個</strong>（幾乎每天）<br>
+  至少1個必須是①憂鬱心情 或 ②失樂
+</div>
+<div class="freq-box">
+  <div class="flabel">DMDD 破壞性情緒失調症</div>
+  情緒爆發：平均<strong>≥ 3次/週</strong>，持續 ≥ 12個月<br>
+  發脾氣：至少2個場所（家/學校/同儕），嚴重於至少1個
+</div>
+<div class="freq-box">
+  <div class="flabel">持續性憂鬱症 PDD (Cyclothymia)</div>
+  Cyclothymia：症狀<strong>至少半數時間</strong>存在，無症狀期<strong>< 2 個月</strong>
+</div>
+<div class="freq-box">
+  <div class="flabel">經前期煩躁症 PMDD</div>
+  過去一年中，大多數月經週期的<strong>最後一週</strong>出現症狀，且<strong>≥ 5 個症狀</strong>（至少1個為情緒核心）
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">😰 焦慮 / OCD / 創傷頻率</div>
+<div class="freq-box">
+  <div class="flabel">GAD 廣泛性焦慮症</div>
+  <strong>多數時間</strong>感到焦慮，持續 <strong>≥ 6 個月</strong>；<strong>≥ 3 個</strong>身體/認知症狀（兒童僅需 1 個）
+</div>
+<div class="freq-box">
+  <div class="flabel">Panic Disorder 恐慌症</div>
+  <strong>反覆意外的</strong>恐慌發作（recurrent unexpected）<br>
+  至少1次發作後，<strong>≥ 1 個月</strong>的預期焦慮或行為改變
+</div>
+<div class="freq-box">
+  <div class="flabel">PTSD</div>
+  症狀（B+C+D+E）持續 <strong>> 1 個月</strong><br>
+  B：≥ 1 侵入症狀；C：≥ 1 逃避；D：≥ 2 認知/情緒；E：≥ 2 激動/反應性
+</div>
+<div class="freq-box">
+  <div class="flabel">OCD 強迫症</div>
+  強迫思考/行為耗時 <strong>> 1 小時/天</strong><br>
+  或造成顯著苦惱/功能損傷
+</div>
+<div class="freq-box">
+  <div class="flabel">延長哀傷症 Prolonged Grief</div>
+  Criterion C：≥ 3 症狀（從9個中選）自喪親後<strong>每天</strong>或<strong>幾乎每天</strong>困擾<br>
+  持續 ≥ 12 個月（成人）/ ≥ 6 個月（兒童青少年）
+</div>
+</div>
+</div>
+
+<div class="two-col">
+<div class="card">
+<div class="card-title">🍽 飲食疾患頻率準則</div>
+<div class="freq-box">
+  <div class="flabel">暴食症 Bulimia Nervosa</div>
+  暴食行為 + 不當補償行為：平均<strong>≥ 1次/週</strong>，持續<strong>≥ 3 個月</strong><br>
+  嚴重程度：<br>
+  · 輕度：1–3次補償行為/週<br>
+  · 中度：4–7次/週<br>
+  · 重度：8–13次/週<br>
+  · 極重度：≥14次/週
+</div>
+<div class="freq-box">
+  <div class="flabel">暴食症 Binge Eating Disorder (BED)</div>
+  暴食發作：平均<strong>≥ 1次/週</strong>，持續<strong>≥ 3 個月</strong><br>
+  嚴重程度：<br>
+  · 輕度：1–3次/週<br>
+  · 中度：4–7次/週<br>
+  · 重度：8–13次/週<br>
+  · 極重度：≥14次/週
+</div>
+<div class="freq-box">
+  <div class="flabel">神經性厭食症 AN</div>
+  無每週頻率規定，強調持續限制熱量攝取<br>
+  BMI 嚴重度：輕度 ≥17，中度 16–16.99，重度 15–15.99，極重度 &lt;15
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">💤 睡眠疾患頻率準則</div>
+<div class="freq-box">
+  <div class="flabel">失眠症 Insomnia Disorder</div>
+  睡眠困難 <strong>≥ 3 晚/週</strong><br>
+  持續 ≥ 3 個月<br>
+  伴隨白天功能損傷
+</div>
+<div class="freq-box">
+  <div class="flabel">過度嗜睡症 Hypersomnolence</div>
+  嗜睡症狀 <strong>≥ 3次/週</strong>，持續<strong>≥ 3 個月</strong>
+</div>
+<div class="freq-box">
+  <div class="flabel">不寧腿症 RLS</div>
+  症狀頻率 <strong>≥ 3次/週</strong>（達到有臨床意義盛行率定義）<br>
+  且有中度或重度苦惱
+</div>
+<div class="freq-box">
+  <div class="flabel">非快速眼動睡眠喚醒症 NREM</div>
+  反覆發作（Episodes of incomplete awakening），通常<strong>在睡眠的前 1/3</strong>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">📋 其他疾患頻率準則速查</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>頻率準則</th><th>Duration</th><th>症狀數要求</th></tr></thead>
+<tbody>
+<tr><td><strong>思覺失調症 Schizophrenia</strong></td><td>活躍期症狀顯著存在（significant portion of time）</td><td>≥6月（含活躍期≥1月）</td><td>A：≥2症狀（至少1為妄想/幻覺/思維混亂）</td></tr>
+<tr><td><strong>社交焦慮症</strong></td><td>幾乎每次暴露都引發恐懼/焦慮</td><td>≥6月</td><td>持續、過度的焦慮</td></tr>
+<tr><td><strong>特定畏懼症</strong></td><td>幾乎每次暴露都引發立即焦慮</td><td>≥6月</td><td>1種以上刺激</td></tr>
+<tr><td><strong>廣場恐懼症</strong></td><td>幾乎所有暴露都引發恐懼/焦慮</td><td>≥6月（≥2情境）</td><td>≥2種廣場恐懼情境</td></tr>
+<tr><td><strong>品行疾患 CD</strong></td><td>每週2次（輕微傷害可3個月）</td><td>≥12月（至少1個≥6月）</td><td>3+症狀（≥15種中），至少1個在過去6月</td></tr>
+<tr><td><strong>對立反抗症 ODD</strong></td><td>≥4次/週（≤5歲）；≥4次/週（>5歲）</td><td>≥6月</td><td>≥4症狀（至少1個場所）</td></tr>
+<tr><td><strong>間歇性爆發症 IED</strong></td><td>平均≥2次/週（持續≥3月）的衝動攻擊性行為爆發</td><td>行為型態≥12月</td><td>2次/週小型爆發 或 3次/年嚴重爆發</td></tr>
+<tr><td><strong>遺尿症 Enuresis</strong></td><td>≥2次/週，持續≥3月（或造成苦惱）</td><td>持續≥3月</td><td>≥5歲，非正常發展所致</td></tr>
+<tr><td><strong>遺糞症 Encopresis</strong></td><td>≥1次/月</td><td>持續≥3月</td><td>≥4歲</td></tr>
+<tr><td><strong>廣泛性身體疼痛（BED相關）</strong></td><td>暴食發作：≥1次/週</td><td>≥3月</td><td>≥5特徵（在暴食期間）</td></tr>
+<tr><td><strong>賭博疾患 Gambling Disorder</strong></td><td>問題賭博行為≥12月內持續或反覆</td><td>≥12月</td><td>≥4症狀（從9個中）</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ══ NEURODEV ══ -->
+<section class="section" id="sec-neurodev">
+<div class="section-title"><span class="dot" style="background:var(--accent2)"></span>神經發展疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>整體盛行率</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>智能發展症 IDD</strong></td>
+  <td><span class="num">~10/1,000</span><br>（中低收入：16/1,000<br>高收入：9/1,000）</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">男>女</td>
+  <td>兒童>成人</td>
+  <td>美國各族裔差異不顯著</td>
+</tr>
+<tr>
+  <td><strong>自閉症光譜症 ASD</strong></td>
+  <td><span class="num">1%–2%</span>（美國）<br>全球中位：<span class="num">0.62%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">男:女 = <span class="num">3:1–4:1</span></td>
+  <td>兒童及成人相近</td>
+  <td>非裔（1.1%）、拉丁裔（0.8%）低於白人（1.3%）</td>
+</tr>
+<tr>
+  <td><strong>ADHD</strong></td>
+  <td>兒童：<span class="num">7.2%</span><br>（範圍 0.1%–10.2%）</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">兒童男>女</td>
+  <td>成人：<span class="num">2.5%</span></td>
+  <td>特殊族群（寄養/懲戒）盛行率更高</td>
+</tr>
+<tr>
+  <td><strong>特定學習症 SLD</strong></td>
+  <td><span class="num">5%–15%</span>（學齡兒童）</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>成人盛行率未知</td>
+  <td>涵蓋閱讀/書寫/數學</td>
+</tr>
+<tr>
+  <td><strong>發展性協調症 DCD</strong></td>
+  <td>5–11歲：<span class="num">5%–8%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">男:女 = <span class="num">2:1–7:1</span></td>
+  <td>嚴重型（英國7歲）：<span class="num">1.8%</span></td>
+  <td>加拿大、瑞典、台灣：7%–8%</td>
+</tr>
+<tr>
+  <td><strong>刻板動作症</strong></td>
+  <td>一般兒童（簡單型）：<span class="num">5%–19%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>複雜型：<span class="num">3%–4%</span></td>
+  <td>IDD族群：4%–16%</td>
+</tr>
+<tr>
+  <td><strong>妥瑞症 Tourette</strong></td>
+  <td>臨床確認：<span class="num">3/1,000</span><br>（美國全國調查）</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">男:女 = <span class="num">2:1–4:1</span></td>
+  <td>加拿大學齡：3–9/1,000</td>
+  <td>所有大洲均有報告</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ PSYCHOSIS ══ -->
+<section class="section" id="sec-psychosis">
+<div class="section-title"><span class="dot" style="background:#a78bfa"></span>思覺失調症光譜盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>思覺失調症 Schizophrenia</strong></td>
+  <td>—</td>
+  <td><span class="num">0.3%–0.7%</span></td>
+  <td class="pill pill-m">男稍高<br>（陰性症狀較多、病程較差）</td>
+  <td>多在青年期發病</td>
+  <td>移民、難民、都市化者較高；可能受誤診影響</td>
+</tr>
+<tr>
+  <td><strong>類思覺失調症 Schizophreniform</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>高收入國家：約為思覺失調症的1/5；低收入國家可能相近</td>
+</tr>
+<tr>
+  <td><strong>短暫精神病症 Brief Psychotic</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>占首發精神病的<span class="num">2%–7%</span></td>
+</tr>
+<tr>
+  <td><strong>妄想症 Delusional Disorder</strong></td>
+  <td>—</td>
+  <td><span class="num">~0.2%</span>（芬蘭）</td>
+  <td>嫉妒型：<span class="pill pill-m">男>女</span><br>整體：無顯著差異</td>
+  <td>—</td>
+  <td>最常見亞型：迫害型</td>
+</tr>
+<tr>
+  <td><strong>思覺失調情感症 Schizoaffective</strong></td>
+  <td>—</td>
+  <td><span class="num">~0.3%</span>（芬蘭）<br>約為思覺失調症的1/3</td>
+  <td class="pill pill-f">女>男</td>
+  <td>—</td>
+  <td>DSM-5準則更嚴格，故實際可能更低</td>
+</tr>
+<tr>
+  <td><strong>物質/藥物引起精神病</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>首發精神病中：<span class="num">7%–25%</span>為此類</td>
+</tr>
+<tr>
+  <td><strong>醫療狀況引起精神病</strong></td>
+  <td>—</td>
+  <td><span class="num">0.21%–0.54%</span>（瑞典/芬蘭）</td>
+  <td>—</td>
+  <td>65歲以上：<span class="num">0.74%</span>（芬蘭）</td>
+  <td>癲癇相關：<span class="num">2%–7.8%</span>；自身免疫：可達60%</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ MOOD ══ -->
+<section class="section" id="sec-mood">
+<div class="section-title"><span class="dot" style="background:var(--yellow)"></span>雙相及憂鬱疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>雙相情緒症 I Bipolar I</strong></td>
+  <td>美國：<span class="num">1.5%</span><br>（男1.6%，女1.5%）<br>全球：<span class="num">0.0%–0.6%</span></td>
+  <td>男:女 ≈ <span class="num">1.1:1</span></td>
+  <td class="pill pill-n">男女相近</td>
+  <td>發病多為青壯年</td>
+  <td>日本極低（0.01%）；高收入國較高；美國原住民較高</td>
+</tr>
+<tr>
+  <td><strong>雙相情緒症 II Bipolar II</strong></td>
+  <td>美國：<span class="num">0.8%</span><br>全球：<span class="num">0.3%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女略高<br>（輕躁混合特徵更多）</td>
+  <td>兒童青少年：Bipolar I+II+NOS合計1.8%–2.7%</td>
+  <td>以憂鬱症狀為主；平均延誤10年以上才確診</td>
+</tr>
+<tr>
+  <td><strong>循環性情緒症 Cyclothymia</strong></td>
+  <td>—</td>
+  <td>美國/歐洲：<span class="num">0.4%–2.5%</span></td>
+  <td class="pill pill-n">男女相近</td>
+  <td>—</td>
+  <td>情緒科門診：3%–5%；女性更傾向就醫</td>
+</tr>
+<tr>
+  <td><strong>重鬱症 MDD</strong></td>
+  <td>美國：<span class="num">~7%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2:1</span><br>初經後至停經前明顯</td>
+  <td>18–29歲：老年人的<strong>3倍</strong><br>青春期後性別差距拉大</td>
+  <td>全球8倍範圍變異；女性更多非典型症狀（嗜睡/食慾增加）</td>
+</tr>
+<tr>
+  <td><strong>持續性憂鬱症 PDD</strong></td>
+  <td>憂鬱性情緒惡劣：<span class="num">0.5%</span><br>慢性重鬱：<span class="num">1.5%</span>（美國）</td>
+  <td>—</td>
+  <td class="pill pill-f">女：男 = <span class="num">1.5–2倍</span></td>
+  <td>—</td>
+  <td>DSM-5合併dysthymia和慢性MDD</td>
+</tr>
+<tr>
+  <td><strong>經前期煩躁症 PMDD</strong></td>
+  <td>德國：<span class="num">5.8%</span><br>美國（嚴格評估）：<span class="num">1.3%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">僅女性</td>
+  <td>月經週期停止後消失</td>
+  <td>回顧性評估往往偏高；前瞻性連續評估更精確</td>
+</tr>
+<tr>
+  <td><strong>DMDD 破壞性情緒失調症</strong></td>
+  <td>社區（11歲巴西）：<span class="num">2.5%</span><br>美國6歲：<span class="num">8.2%</span></td>
+  <td>—</td>
+  <td>臨床樣本：男多<br>（土耳其門診80%為男孩）</td>
+  <td>較年幼族群較常見</td>
+  <td>社區整體盛行率不明確</td>
+</tr>
+<tr>
+  <td><strong>物質引起憂鬱症</strong></td>
+  <td>—</td>
+  <td><span class="num">0.26%</span>（無非物質性憂鬱史）</td>
+  <td>—</td>
+  <td>—</td>
+  <td>酒精/興奮劑使用者中終生率高達40%以上</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ ANXIETY ══ -->
+<section class="section" id="sec-anxiety">
+<div class="section-title"><span class="dot" style="background:var(--green)"></span>焦慮疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>分離焦慮症</strong></td>
+  <td>兒童（6–12月）：<span class="num">~4%</span><br>青少年：<span class="num">1.6%</span><br>成人：<span class="num">0.9%–1.9%</span></td>
+  <td>—</td>
+  <td>幼兒：男女相近<br>學齡：<span class="pill pill-f">女>男</span></td>
+  <td>從兒童至成人盛行率遞減</td>
+  <td>老年：0.1%（美）；65歲以上：2.7%（非美國）</td>
+</tr>
+<tr>
+  <td><strong>選擇性緘默症 Selective Mutism</strong></td>
+  <td><span class="num">0.03%–1.9%</span>（依樣本）</td>
+  <td>—</td>
+  <td class="pill pill-f">女略多（部分研究）</td>
+  <td>幼童期發病</td>
+  <td>非母語者風險較高；種族差異不明顯</td>
+</tr>
+<tr>
+  <td><strong>特定畏懼症 Specific Phobia</strong></td>
+  <td>美國：<span class="num">8%–12%</span><br>歐洲：<span class="num">~6%</span><br>亞/非/拉丁：<span class="num">2%–4%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2:1</span></td>
+  <td>兒童：<span class="num">5%</span><br>13–17歲：<span class="num">16%</span>（美）<br>老年：<span class="num">3%–5%</span></td>
+  <td>青少年盛行率最高；老年略降</td>
+</tr>
+<tr>
+  <td><strong>社交焦慮症 SAD</strong></td>
+  <td>美國：<span class="num">7%</span><br>全球：<span class="num">0.5%–2.0%</span><br>歐洲中位：<span class="num">2.3%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女>男（OR 1.5–2.2）<br>但求診男女相近</td>
+  <td>13–17歲：約為成人的一半<br>65歲後下降</td>
+  <td>老年（北美/歐/澳）：2%–5%；美國/東亞有增加趨勢</td>
+</tr>
+<tr>
+  <td><strong>恐慌症 Panic Disorder</strong></td>
+  <td>美國/歐洲：<span class="num">2%–3%</span></td>
+  <td>全球：<span class="num">1.7%</span><br>WHM投射終生：<span class="num">2.7%</span></td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2:1</span></td>
+  <td>平均發病：22–23歲<br>青春期前罕見</td>
+  <td>亞裔美國人、非裔、拉丁裔低於白人；美國原住民2.6%–4.1%</td>
+</tr>
+<tr>
+  <td><strong>恐慌發作 Panic Attack<br>（非疾患）</strong></td>
+  <td>美國/西班牙：<span class="num">9.5%–11.2%</span></td>
+  <td>全球：<span class="num">13.2%</span></td>
+  <td class="pill pill-f">女>男</td>
+  <td>青春期後增加；老年遞減</td>
+  <td>美國原住民終生：8.5%；種族間12月率無顯著差異</td>
+</tr>
+<tr>
+  <td><strong>廣場恐懼症 Agoraphobia</strong></td>
+  <td>全球：<span class="num">1%–1.7%</span><br>美國65歲以上：<span class="num">0.4%</span><br>歐洲55歲以上：<span class="num">0.5%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2:1</span></td>
+  <td>晚青少年至成人早期達高峰</td>
+  <td>不合并恐慌症：0.2%–0.8%</td>
+</tr>
+<tr>
+  <td><strong>廣泛性焦慮症 GAD</strong></td>
+  <td>青少年：<span class="num">0.9%</span><br>成人（美）：<span class="num">2.9%</span><br>全球：<span class="num">0.2%–4.3%</span>（均1.3%）</td>
+  <td>美國終生風險：<span class="num">9.0%</span></td>
+  <td class="pill pill-f">女：男 ≥ <span class="num">2:1</span></td>
+  <td>75歲以上：<span class="num">2.8%–3.1%</span></td>
+  <td>歐洲裔多於亞洲裔、非洲裔</td>
+</tr>
+<tr>
+  <td><strong>物質引起焦慮症</strong></td>
+  <td>美國：<span class="num">0.002%</span>（一般社區）</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>臨床族群中更高；數據有限</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ OCD ══ -->
+<section class="section" id="sec-ocd">
+<div class="section-title"><span class="dot" style="background:#60a5fa"></span>強迫及相關疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生/點盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>OCD 強迫症</strong></td>
+  <td>美國：<span class="num">1.2%</span><br>國際：<span class="num">1.1%–1.8%</span></td>
+  <td>—</td>
+  <td>成人：<span class="pill pill-f">女略高</span><br>兒童：<span class="pill pill-m">男較多</span></td>
+  <td>—</td>
+  <td>加拿大、波多黎各、德國、台灣、韓國、紐西蘭均約1.1%–1.8%</td>
+</tr>
+<tr>
+  <td><strong>身體變形症 BDD</strong></td>
+  <td>美國（點）：<span class="num">2.4%</span><br>（女2.5%，男2.2%）<br>歐洲：<span class="num">1.7%–2.9%</span></td>
+  <td>—</td>
+  <td class="pill pill-n">男女相近</td>
+  <td>青少年女>男</td>
+  <td>皮膚科：11%–13%；整形外科：13%–15%；鼻整形：20%</td>
+</tr>
+<tr>
+  <td><strong>囤積症 Hoarding</strong></td>
+  <td>美國/歐洲：<span class="num">1.5%–6%</span></td>
+  <td>Meta分析：<span class="num">2.5%</span></td>
+  <td class="pill pill-n">無性別差異<br>（臨床樣本女多）</td>
+  <td>65歲以上約為30–40歲的3倍</td>
+  <td>荷蘭老年盛行率顯著較高</td>
+</tr>
+<tr>
+  <td><strong>拔毛症 Trichotillomania</strong></td>
+  <td>成人/青少年：<span class="num">1%–2%</span>（美國）<br>目前現況：<span class="num">1.7%</span></td>
+  <td>—</td>
+  <td>臨床樣本：<span class="pill pill-f">女：男=10:1</span><br>社區：約2:1<br>目前：男(1.8%)≈女(1.7%)</td>
+  <td>兒童：男女相近</td>
+  <td>美國10,000人大樣本（18–69歲）</td>
+</tr>
+<tr>
+  <td><strong>摳皮症 Excoriation</strong></td>
+  <td>目前現況：<span class="num">2.1%</span></td>
+  <td>終生：<span class="num">3.1%</span></td>
+  <td class="pill pill-f">女≥75%</td>
+  <td>—</td>
+  <td>美國10,000人大樣本（18–69歲）</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ TRAUMA ══ -->
+<section class="section" id="sec-trauma">
+<div class="section-title"><span class="dot" style="background:#f87171"></span>創傷及壓力相關疾患 / 解離疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>反應性依附症 RAD</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>嚴重疏忽兒童中&lt;<span class="num">10%</span>；整體罕見</td>
+</tr>
+<tr>
+  <td><strong>去抑制社交活動症 DSED</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>英國低收入社區：&lt;<span class="num">2%</span>；整體罕見</td>
+</tr>
+<tr>
+  <td><strong>PTSD 創傷後壓力症</strong></td>
+  <td>美國：<span class="num">4.7%</span>（DSM-5）</td>
+  <td>美國成人（DSM-IV）：<span class="num">6.8%</span><br>DSM-5：<span class="num">6.1%–8.3%</span><br>全球24國：<span class="num">3.9%</span></td>
+  <td class="pill pill-f">女>男</td>
+  <td>青少年（DSM-IV終生）：5.0%–8.1%<br>青少年6月：4.9%</td>
+  <td>拉丁裔、非裔、美國原住民高於白人；強暴/軍事俘虜：1/3–1/2</td>
+</tr>
+<tr>
+  <td><strong>急性壓力症 ASD</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>非人際創傷後：&lt;<span class="num">20%</span>；人際創傷後：<span class="num">19%–50%</span></td>
+</tr>
+<tr>
+  <td><strong>適應障礙症 Adjustment</strong></td>
+  <td>門診：<span class="num">5%–20%</span><br>住院精神諮詢：達<span class="num">50%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女略高（丹麥研究）</td>
+  <td>—</td>
+  <td>最常見的精神科診斷之一</td>
+</tr>
+<tr>
+  <td><strong>延長哀傷症 Prolonged Grief</strong></td>
+  <td>—</td>
+  <td>Meta分析（≥6月定義）：<span class="num">9.8%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>高暴力/創傷暴露族群較高；西方高收入國可能較高</td>
+</tr>
+<tr>
+  <td><strong>解離性身份症 DID</strong></td>
+  <td>美國社區：<span class="num">1.5%</span></td>
+  <td>土耳其女性社區：<span class="num">1.1%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>樣本小；數據有限</td>
+</tr>
+<tr>
+  <td><strong>解離性失憶症 Dissociative Amnesia</strong></td>
+  <td>美國社區：<span class="num">1.8%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>數據有限</td>
+</tr>
+<tr>
+  <td><strong>去人格化/去現實化症</strong></td>
+  <td>英國1月盛行：<span class="num">1%–2%</span></td>
+  <td>約一半成人曾有至少一次發作（非疾患）</td>
+  <td>—</td>
+  <td>—</td>
+  <td>符合完整準則的疾患遠少於暫時性症狀</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ SOMATIC ══ -->
+<section class="section" id="sec-somatic">
+<div class="section-title"><span class="dot" style="background:#34d399"></span>身體症狀及相關疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月/點盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>身體症狀障礙症 SSD</strong></td>
+  <td>一般成人：<span class="num">5%–7%</span><br>問卷研究：<span class="num">6.7%–17.4%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女>男</td>
+  <td>—</td>
+  <td>DSM-IV化症（&lt;1%）、未分化（~19%）；DSM-5定義更廣</td>
+</tr>
+<tr>
+  <td><strong>疾病焦慮症 Illness Anxiety</strong></td>
+  <td>社區1–2年：<span class="num">1.3%–10%</span><br>門診6月/1年：<span class="num">2.2%–8%</span>（均值3%）</td>
+  <td>—</td>
+  <td class="pill pill-n">男女相近</td>
+  <td>—</td>
+  <td>專科門診：約1/5有疾病焦慮</td>
+</tr>
+<tr>
+  <td><strong>功能性神經症狀症 FND<br>（轉化症）</strong></td>
+  <td>神經科門診：<span class="num">5%–15%</span><br>特定族群：<span class="num">5%–6%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>9–17歲精神門診（日本）：5%<br>住院（阿曼）：6%</td>
+  <td>發生率：4–12/100,000/年（美國/北歐）</td>
+</tr>
+<tr>
+  <td><strong>偽病症 Factitious Disorder</strong></td>
+  <td>住院精神諮詢（美）：<span class="num">~1%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>因欺騙性質，嚴重低估；三級醫療更常見</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ EATING ══ -->
+<section class="section" id="sec-eating">
+<div class="section-title"><span class="dot" style="background:#f97316"></span>飲食及排泄疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>異食症 Pica</strong></td>
+  <td>學齡兒童：<span class="num">~5%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>孕婦：約1/3（特別是食物不安全者）</td>
+  <td>相關因素：食物匱乏、維生素缺乏</td>
+</tr>
+<tr>
+  <td><strong>反芻症 Rumination</strong></td>
+  <td>歐洲兒童：<span class="num">1%–2%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>小學年齡</td>
+  <td>歷史上多描述於IDD族群</td>
+</tr>
+<tr>
+  <td><strong>逃避/限制飲食症 ARFID</strong></td>
+  <td>澳洲：<span class="num">0.3%</span>（≥15歲）</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>盛行率資料極少</td>
+</tr>
+<tr>
+  <td><strong>神經性厭食症 AN</strong></td>
+  <td>12月：<span class="num">0.0%–0.05%</span><br>女：<span class="num">0%–0.08%</span><br>男：<span class="num">0%–0.01%</span></td>
+  <td>女：<span class="num">0.9%–1.42%</span><br>男：<span class="num">0.12%–0.3%</span><br>整體：<span class="num">0.60%–0.80%</span></td>
+  <td class="pill pill-f">女遠高於男</td>
+  <td>最常見於青少年期後（已發育）</td>
+  <td>高收入後工業化國家最盛行；中低收入國漸增</td>
+</tr>
+<tr>
+  <td><strong>神經性暴食症 BN</strong></td>
+  <td>女：<span class="num">0.22%–0.5%</span><br>男：<span class="num">0.05%–0.1%</span><br>整體：<span class="num">0.14%–0.3%</span></td>
+  <td>女：<span class="num">0.46%–1.5%</span><br>男：<span class="num">0.05%–0.08%</span><br>整體：<span class="num">0.28%–1.0%</span></td>
+  <td class="pill pill-f">女遠高於男</td>
+  <td>青少年（13–18）：女1.3%，男0.5%</td>
+  <td>常見於青春期晚期至成人早期；高收入國最高</td>
+</tr>
+<tr>
+  <td><strong>暴食症 BED</strong></td>
+  <td>女：<span class="num">0.6%–1.6%</span><br>男：<span class="num">0.26%–0.8%</span><br>整體：<span class="num">0.44%–1.2%</span></td>
+  <td>女：<span class="num">1.25%–3.5%</span><br>男：<span class="num">0.42%–2.0%</span><br>整體：<span class="num">0.85%–2.8%</span></td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2–3:1</span></td>
+  <td>—</td>
+  <td>高收入國12月率：0.1%–1.2%；族裔差異不顯著</td>
+</tr>
+<tr>
+  <td><strong>遺尿症 Enuresis</strong></td>
+  <td>7歲白天：<span class="num">3.2%–9.0%</span><br>5歲夜間：<span class="num">5%–10%</span><br>10歲：<span class="num">3%–5%</span><br>≥15歲：<span class="num">~1%</span></td>
+  <td>—</td>
+  <td class="pill pill-m">男略高</td>
+  <td>盛行率隨年齡顯著下降</td>
+  <td>非裔美國兒童、土耳其/摩洛哥移民較高；ADHD共病者較高</td>
+</tr>
+<tr>
+  <td><strong>遺糞症 Encopresis</strong></td>
+  <td>高收入：<span class="num">1%–4%</span><br>亞洲部分：<span class="num">2%–8%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>4–6歲(&gt;4%)&gt;10–12歲(&lt;2%)</td>
+  <td>多數為「便秘及溢流失禁」亞型</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ SLEEP ══ -->
+<section class="section" id="sec-sleep">
+<div class="section-title"><span class="dot" style="background:#38bdf8"></span>睡眠疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月/點盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>失眠症 Insomnia Disorder</strong></td>
+  <td>一般成人：<span class="num">4%–22%</span>（均約10%）<br>初級照護：<span class="num">20%–40%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>最常見睡眠疾患；情緒/焦慮/物質使用者更高；1/3成人有失眠症狀</td>
+</tr>
+<tr>
+  <td><strong>過度嗜睡症 Hypersomnolence</strong></td>
+  <td>睡眠門診：<span class="num">5%–10%</span></td>
+  <td>—</td>
+  <td class="pill pill-n">男女相近</td>
+  <td>—</td>
+  <td>睡眠遲惰：一般族群約1%</td>
+</tr>
+<tr>
+  <td><strong>嗜睡症 Narcolepsy（NT1）</strong></td>
+  <td>全球：<span class="num">0.02%–0.05%</span><br>美國發生率：0.74/100,000/年</td>
+  <td>—</td>
+  <td class="pill pill-n">男女相近</td>
+  <td>—</td>
+  <td>以色列較低；日本較高</td>
+</tr>
+<tr>
+  <td><strong>阻塞性睡眠呼吸中止 OSA</strong></td>
+  <td>美國：男<span class="num">13%</span>，女<span class="num">6%</span><br>（AHI≥15）<br>含症狀：男14%，女5%</td>
+  <td>—</td>
+  <td class="pill pill-m">男：女 = <span class="num">2:1–4:1</span><br>老年差距縮小</td>
+  <td>老年更高</td>
+  <td>與肥胖強烈相關；隨肥胖率增加而上升</td>
+</tr>
+<tr>
+  <td><strong>中樞性睡眠呼吸中止</strong></td>
+  <td>—</td>
+  <td>—</td>
+  <td class="pill pill-m">男遠多於女</td>
+  <td>60歲以上最多</td>
+  <td>射出分數&lt;45%：15%–44%；急性中風後：20%；慢性鴉片劑：24%</td>
+</tr>
+<tr>
+  <td><strong>睡眠相關換氣不足</strong></td>
+  <td>肥胖相關：<span class="num">0.14%–0.6%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>BMI&gt;35睡眠門診：42%</td>
+</tr>
+<tr>
+  <td><strong>晝夜節律睡醒疾患<br>（延遲睡眠型）</strong></td>
+  <td>青少年/年輕成人：<span class="num">3.3%–4.6%</span>（北歐）<br>成人：<span class="num">0.2%–1.7%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>青少年盛行率最高</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>非快速眼動喚醒症 NREM<br>（夢遊/夜驚）</strong></td>
+  <td>夢遊（兒童）：<span class="num">5%</span>（12月）</td>
+  <td>夢遊（全球）：<span class="num">6.9%–29.2%</span></td>
+  <td>—</td>
+  <td>兒童10%–30%曾有夢遊；成人每週/月：0.5%–0.7%</td>
+  <td>英國成人夢遊症：1%–7%；加拿大兒童：12%–14.5%</td>
+</tr>
+<tr>
+  <td><strong>夢魘症 Nightmare Disorder</strong></td>
+  <td>成人月度：<span class="num">6%</span><br>週度：<span class="num">2%–6%</span><br>頻繁：<span class="num">1%–5%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>兒童：1%–5%<br>5–15歲：5.2%</td>
+  <td>父母報告學前兒「常常或總是」噩夢：1.3%–3.9%</td>
+</tr>
+<tr>
+  <td><strong>快速眼動睡眠行為症 RBD</strong></td>
+  <td>瑞士中老年：<span class="num">1%</span><br>南韓老年：<span class="num">2%</span></td>
+  <td>—</td>
+  <td class="pill pill-n">50歲前男女相近</td>
+  <td>老年更多</td>
+  <td>精神科藥物使用者可能更高</td>
+</tr>
+<tr>
+  <td><strong>不寧腿症 RLS</strong></td>
+  <td>嚴重（≥3次/週）：<span class="num">1.6%</span>（美/歐）<br>顯著損傷：<span class="num">2%–3%</span></td>
+  <td>—</td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">2:1</span></td>
+  <td>隨年齡增加</td>
+  <td>亞洲（日/韓）盛行率較低</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ SEXUAL ══ -->
+<section class="section" id="sec-sexual">
+<div class="section-title"><span class="dot" style="background:#ec4899"></span>性功能障礙 / 性別不安盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>盛行率</th><th>性別</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>延遲射精</strong></td>
+  <td>美國：<span class="num">1%–5%</span><br>國際：達<span class="num">11%</span></td>
+  <td><span class="pill pill-m">僅男性</span></td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>勃起功能障礙</strong></td>
+  <td>40–80歲男：<span class="num">13%–21%</span></td>
+  <td><span class="pill pill-m">僅男性</span></td>
+  <td>&lt;40歲：&lt;10%<br>60多歲：20%–40%<br>&gt;70歲：50%–75%<br>澳洲70歲以上：80%</td>
+  <td>50歲後急增</td>
+</tr>
+<tr>
+  <td><strong>女性高潮症 Female Orgasmic</strong></td>
+  <td>停經前女：<span class="num">8%–72%</span>（有苦惱者較低）</td>
+  <td><span class="pill pill-f">僅女性</span></td>
+  <td>—</td>
+  <td>終生從未高潮者：~10%</td>
+</tr>
+<tr>
+  <td><strong>生殖器盆腔疼痛/插入症</strong></td>
+  <td>美國育齡女：<span class="num">10%–28%</span><br>全球育齡女：<span class="num">8%–28%</span></td>
+  <td><span class="pill pill-f">僅女性</span></td>
+  <td>—</td>
+  <td>跨性別女性/女同性戀：不確定</td>
+</tr>
+<tr>
+  <td><strong>女性性趣/激起症 FSIAD</strong></td>
+  <td>慢性低慾望：<span class="num">~30%</span><br>（其中半數有伴侶苦惱，1/4有個人苦惱）</td>
+  <td><span class="pill pill-f">僅女性</span></td>
+  <td>與年齡正相關，但苦惱與年齡負相關</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>男性性慾低落 MHSDD</strong></td>
+  <td>代表性樣本：<span class="num">3%–17%</span><br>持久性（≥6月）：<span class="num">6%</span></td>
+  <td><span class="pill pill-m">僅男性</span></td>
+  <td>16–24歲：3%–14%<br>60–74歲：16%–28%</td>
+  <td>顯著苦惱者：&lt;2%；求助者：10.5%</td>
+</tr>
+<tr>
+  <td><strong>早洩（早發射精）</strong></td>
+  <td>國際：<span class="num">8%–30%</span><br>嚴格定義（&lt;1分鐘）：<span class="num">1%–3%</span></td>
+  <td><span class="pill pill-m">僅男性</span></td>
+  <td>18–30歲：9%–11%<br>50–59歲：達55%</td>
+  <td>定義差異極大，盛行率差距明顯</td>
+</tr>
+<tr>
+  <td><strong>物質/藥物引起性功能障礙</strong></td>
+  <td>抗憂鬱藥：<span class="num">25%–80%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>MAOIs、三環、SSRI、SNRI均高；各藥物間有差異</td>
+</tr>
+<tr>
+  <td><strong>性別不安 Gender Dysphoria</strong></td>
+  <td>治療相關族群：&lt;<span class="num">0.1%</span><br>自我認同跨性別：<span class="num">0.5%–0.6%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>一致性別認同感（另一性別）：~0.6%；同性別感（介於）：1.1%–2.6%</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ DISRUPTIVE ══ -->
+<section class="section" id="sec-disruptive">
+<div class="section-title"><span class="dot" style="background:var(--orange)"></span>破壞性、衝動控制及品行疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>12月/1年盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>對立反抗症 ODD</strong></td>
+  <td>跨國：<span class="num">1%–11%</span>（均3.3%）</td>
+  <td>—</td>
+  <td class="pill pill-m">男>女（青春期前1.59:1）</td>
+  <td>青春期後性別差距縮小</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>間歇性爆發症 IED</strong></td>
+  <td>美國1年：<span class="num">2.6%</span></td>
+  <td><span class="num">4.0%</span></td>
+  <td class="pill pill-m">男>女</td>
+  <td>非裔/加勒比黑人青少年：3.9%–6.9%</td>
+  <td>年輕族群較高；可能與種族歧視/社會流動有關</td>
+</tr>
+<tr>
+  <td><strong>品行疾患 CD</strong></td>
+  <td>美國/高收入：<span class="num">2%–10%+</span>（均4%）</td>
+  <td>男：<span class="num">12.0%</span><br>女：<span class="num">7.1%</span></td>
+  <td class="pill pill-m">男>女</td>
+  <td>青春期盛行率升高</td>
+  <td>各西方國家相近；青少年起始型與社會壓力相關</td>
+</tr>
+<tr>
+  <td><strong>縱火症 Pyromania</strong></td>
+  <td>—</td>
+  <td>放火行為：<span class="num">1.0%–1.1%</span><br>縱火症本身：極罕見</td>
+  <td>放火：<span class="pill pill-m">男(1.7%)>女(0.4%)</span></td>
+  <td>發病常在青晚期</td>
+  <td>純縱火症診斷：芬蘭3.3%、美國3.4%（受刑者中）</td>
+</tr>
+<tr>
+  <td><strong>竊盜症 Kleptomania</strong></td>
+  <td>—</td>
+  <td>一般社區：<span class="num">0.3%–0.6%</span></td>
+  <td class="pill pill-f">女：男 ≈ <span class="num">3:1</span></td>
+  <td>—</td>
+  <td>扒竊被捕者中：4%–24%</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ SUBSTANCE ══ -->
+<section class="section" id="sec-substance">
+<div class="section-title"><span class="dot" style="background:#a3e635"></span>物質相關及成癮疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>物質/疾患</th><th>12月盛行率</th><th>終生盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>酒精使用疾患 AUD</strong></td>
+  <td>12–17歲：<span class="num">4.6%</span><br>18–29歲：<span class="num">16.2%</span><br>65歲以上：<span class="num">1.5%</span></td>
+  <td>美國：<span class="num">29.1%</span>（輕8.6%/中6.6%/重13.9%）<br>澳洲：<span class="num">31.0%</span></td>
+  <td class="pill pill-m">男(36%)>女(22.7%)</td>
+  <td>18–29歲最高；65歲以上1.5%</td>
+  <td>族裔差異：種族差異研究詳細</td>
+</tr>
+<tr>
+  <td><strong>酒精中毒 Intoxication</strong></td>
+  <td>高風險飲酒（美國成人）：<span class="num">7.2%–17.4%</span>（依族裔）</td>
+  <td>12年級生醉過：<span class="num">43%</span></td>
+  <td>—</td>
+  <td>12年級生過去30天：17.5%</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>酒精戒斷 Withdrawal</strong></td>
+  <td>—</td>
+  <td>AUD中高功能族群：<span class="num">~50%</span><br>住院/遊民：&gt;<span class="num">80%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>戒斷譫妄/癲癇：&lt;10%</td>
+</tr>
+<tr>
+  <td><strong>咖啡因中毒</strong></td>
+  <td>美國：<span class="num">~7%</span>符合5+症狀加功能損傷</td>
+  <td>85%+成人兒童規律使用咖啡因</td>
+  <td>—</td>
+  <td>青少年/年輕成人能量飲料使用增加</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>咖啡因戒斷</strong></td>
+  <td>—</td>
+  <td>戒斷頭痛：<span class="num">~50%</span>停用者<br>完整症狀：<span class="num">24%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>嘗試永久停用者：70%有≥1症狀</td>
+</tr>
+<tr>
+  <td><strong>大麻使用疾患</strong></td>
+  <td>成人（DSM-5）：<span class="num">~2.5%</span><br>（輕1.4%/中0.6%/重0.6%）<br>青少年（DSM-IV）：<span class="num">2.7%–3.1%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>青少年近10年下降；成人微增</td>
+  <td>使用者中：青少年20.4%，成人30.6%符合DSM-IV疾患</td>
+</tr>
+<tr>
+  <td><strong>大麻戒斷</strong></td>
+  <td>規律使用者（一般）：<span class="num">12%</span>（DSM-5）</td>
+  <td>廣泛估計：<span class="num">35%–95%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>治療/重度使用者：50%–95%</td>
+</tr>
+<tr>
+  <td><strong>其他迷幻劑使用疾患</strong></td>
+  <td>美國12歲以上：<span class="num">0.1%</span></td>
+  <td>—</td>
+  <td class="pill pill-m">男>女</td>
+  <td>12–17歲：0.2%；18–25歲：0.4%</td>
+  <td>使用者中有問題模式：73.5%（成人）</td>
+</tr>
+<tr>
+  <td><strong>吸入劑使用疾患</strong></td>
+  <td>青少年：<span class="num">0.1%</span><br>成人：<span class="num">0.04%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>青少年12月使用：2.3%；成人：0.21%</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>鴉片類使用疾患</strong></td>
+  <td>處方：<span class="num">0.6%–0.9%</span>（成人）<br>海洛因：<span class="num">0.1%–0.3%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>18–25歲最高；青少年：2.8%–3.9%非醫療處方</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>鎮靜劑/安眠藥使用疾患</strong></td>
+  <td>青少年：<span class="num">0.3%</span><br>18–29歲：<span class="num">0.5%</span><br>65歲以上：<span class="num">0.04%</span></td>
+  <td>—</td>
+  <td class="pill pill-n">美國無性別差異<br>其他國：女略高</td>
+  <td>18–29歲最高</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>興奮劑使用疾患（安非他命）</strong></td>
+  <td>12歲以上：<span class="num">0.4%</span><br>18–25歲：<span class="num">0.5%</span></td>
+  <td>—</td>
+  <td><span class="pill pill-m">男(0.5%)>女(0.2%)</span></td>
+  <td>18–25歲最高</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>菸草使用疾患</strong></td>
+  <td>美國18歲以上：<span class="num">20%</span></td>
+  <td>—</td>
+  <td class="pill pill-m">男>女</td>
+  <td>—</td>
+  <td>原住民：29.6%；非裔：22.3%；白人：22.3%；拉丁裔：12.2%；亞裔：11.2%</td>
+</tr>
+<tr>
+  <td><strong>菸草戒斷</strong></td>
+  <td>—</td>
+  <td>戒煙≥2天者：<span class="num">~50%</span>有4+症狀</td>
+  <td>—</td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>賭博疾患 Gambling Disorder</strong></td>
+  <td>美國：<span class="num">0.2%–0.3%</span><br>全球：<span class="num">0.1%–0.7%</span></td>
+  <td>男：<span class="num">~0.6%</span><br>女：<span class="num">~0.2%</span><br>整體：<span class="num">0.4%–1.0%</span></td>
+  <td class="pill pill-m">男>女</td>
+  <td>—</td>
+  <td>非裔（12月0.52%)&gt;拉丁裔(0.25%)&gt;白人(0.23%)</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ NEURO ══ -->
+<section class="section" id="sec-neuro">
+<div class="section-title"><span class="dot" style="background:#38bdf8"></span>神經認知疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>盛行率</th><th>性別差異</th><th>年齡差異</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>譫妄 Delirium</strong></td>
+  <td>社區（整體）：<span class="num">1%–2%</span><br>急診65歲以上：<span class="num">8%–17%</span><br>住院入院時：<span class="num">18%–35%</span><br>住院中新發：<span class="num">29%–64%</span></td>
+  <td>—</td>
+  <td>老年人最高；ICU：64%</td>
+  <td>老年術後：11%–51%；安寧：<span class="num">88%</span>（臨終前）</td>
+</tr>
+<tr>
+  <td><strong>阿茲海默症 NCD</strong></td>
+  <td>60–69歲：<span class="num">5%–10%</span><br>之後：≥<span class="num">25%</span><br>65歲以上：<span class="num">11%</span><br>85歲以上：<span class="num">32%</span></td>
+  <td class="pill pill-f">女：整體失智女>男</td>
+  <td>每5歲幾乎倍增<br>75歲以上佔81%</td>
+  <td>佔所有失智60%–90%（依設定）；美2016年約540萬人</td>
+</tr>
+<tr>
+  <td><strong>額顳葉 NCD</strong></td>
+  <td>全國：2–31/100,000</td>
+  <td class="pill pill-n">男女大致相近</td>
+  <td>&lt;65歲早發型最常見<br>20%–25%在65歲以上</td>
+  <td>占所有失智~5%；行為變異型占60%</td>
+</tr>
+<tr>
+  <td><strong>路易氏體 NCD</strong></td>
+  <td>一般老年社區：<span class="num">0%–1.2%</span><br>所有失智中：<span class="num">0%–9.7%</span><br>門診失智：<span class="num">7.5%</span></td>
+  <td class="pill pill-n">無顯著性別差異</td>
+  <td>—</td>
+  <td>Lewy體病理：20%–35%所有失智屍檢</td>
+</tr>
+<tr>
+  <td><strong>血管型 NCD</strong></td>
+  <td>71–79歲：<span class="num">0.98%</span><br>80–89歲：<span class="num">4.09%</span><br>≥90歲：<span class="num">6.19%</span></td>
+  <td>—</td>
+  <td>60–69歲歐洲純血管型：15%</td>
+  <td>第二常見失智；中風後3月內：20%–30%；混合型（阿+血管）：5.5%</td>
+</tr>
+<tr>
+  <td><strong>TBI 後 NCD</strong></td>
+  <td>—</td>
+  <td class="pill pill-m">男>女（&lt;75歲）</td>
+  <td>75歲後男女趨近</td>
+  <td>美國年發生：287萬TBI；男547.6/女385.9（每10萬急診）</td>
+</tr>
+<tr>
+  <td><strong>HIV 後 NCD</strong></td>
+  <td>無症狀認知損傷（ANI）：最多<br>輕度NCD：約1/4<br>重大NCD：&lt;<span class="num">5%</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>HIV感染者中：1/3–1/2有某程度認知障礙</td>
+</tr>
+<tr>
+  <td><strong>帕金森氏症 NCD</strong></td>
+  <td>帕金森氏症（60–69歲）：<span class="num">0.4%</span><br>（80–89歲）：<span class="num">1.4%</span></td>
+  <td class="pill pill-m">男>女</td>
+  <td>隨年齡增加</td>
+  <td>帕金森氏症患者最終80%會發展重大NCD；輕度NCD：25%–27%</td>
+</tr>
+<tr>
+  <td><strong>亨丁頓症 NCD</strong></td>
+  <td>全球：<span class="num">2.7/100,000</span><br>北美/歐/澳：<span class="num">5.7/100,000</span><br>亞洲：<span class="num">0.40/100,000</span></td>
+  <td>—</td>
+  <td>—</td>
+  <td>認知缺損為最終結果</td>
+</tr>
+<tr>
+  <td><strong>酒精 NCD</strong></td>
+  <td>AUD戒斷前2月：輕度NCD <span class="num">30%–40%</span></td>
+  <td class="pill pill-m">男：酒精誘發重大NCD較多</td>
+  <td>50歲後仍飲酒者輕度NCD持續</td>
+  <td>重大NCD（Wernicke-Korsakoff）：罕見，多伴營養缺乏</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ PERSONALITY ══ -->
+<section class="section" id="sec-personality">
+<div class="section-title"><span class="dot" style="background:#fb7185"></span>人格疾患盛行率</div>
+<div class="alert">📌 以下數據多來自兩大美國調查：NCS-R（全國共病研究複製版）及NESARC（酒精相關流行病調查）</div>
+<table class="prev">
+<thead><tr><th>人格疾患</th><th>NCS-R盛行率</th><th>NESARC盛行率</th><th>Meta分析中位</th><th>性別差異</th><th>特殊族群</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>A群：妄想性人格 PPD</strong></td>
+  <td><span class="num">2.3%</span></td>
+  <td><span class="num">4.4%</span></td>
+  <td><span class="num">3.2%</span></td>
+  <td>—</td>
+  <td>司法/鑑識：達23%</td>
+</tr>
+<tr>
+  <td><strong>A群：分裂性人格 SPD</strong></td>
+  <td><span class="num">4.9%</span></td>
+  <td><span class="num">3.1%</span></td>
+  <td><span class="num">1.3%</span></td>
+  <td>—</td>
+  <td>臨床少見</td>
+</tr>
+<tr>
+  <td><strong>A群：思覺失調型人格 STPD</strong></td>
+  <td><span class="num">3.3%</span></td>
+  <td><span class="num">3.9%</span></td>
+  <td><span class="num">0.6%</span></td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>B群：反社會人格 ASPD</strong></td>
+  <td><span class="num">0.6%</span></td>
+  <td><span class="num">3.6%</span></td>
+  <td><span class="num">3.6%</span></td>
+  <td class="pill pill-m">男>女</td>
+  <td>嚴重AUD+鑑識：&gt;70%</td>
+</tr>
+<tr>
+  <td><strong>B群：邊緣性人格 BPD</strong></td>
+  <td><span class="num">1.4%</span></td>
+  <td><span class="num">5.9%</span></td>
+  <td><span class="num">2.7%</span></td>
+  <td>臨床：<span class="pill pill-f">女多</span></td>
+  <td>初級照護：6%；門診：10%；住院：20%</td>
+</tr>
+<tr>
+  <td><strong>B群：戲劇性人格 HPD</strong></td>
+  <td><span class="num">0.0%</span></td>
+  <td><span class="num">1.8%</span></td>
+  <td><span class="num">0.9%</span></td>
+  <td>臨床：<span class="pill pill-f">女>男</span>；社區差異小</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>B群：自戀性人格 NPD</strong></td>
+  <td><span class="num">0.0%</span></td>
+  <td><span class="num">6.2%</span></td>
+  <td><span class="num">1.6%</span></td>
+  <td>—</td>
+  <td>NESARC估計偏高</td>
+</tr>
+<tr>
+  <td><strong>C群：逃避性人格 AvPD</strong></td>
+  <td><span class="num">5.2%</span></td>
+  <td><span class="num">2.4%</span></td>
+  <td><span class="num">2.1%</span></td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>C群：依賴性人格 DPD</strong></td>
+  <td><span class="num">0.6%</span></td>
+  <td><span class="num">0.5%</span></td>
+  <td><span class="num">0.4%</span></td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>C群：強迫性人格 OCPD</strong></td>
+  <td><span class="num">2.4%</span></td>
+  <td><span class="num">7.9%</span></td>
+  <td><span class="num">4.7%</span></td>
+  <td>—</td>
+  <td>NESARC估計偏高</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ══ PARAPHILIC ══ -->
+<section class="section" id="sec-paraphilic">
+<div class="section-title"><span class="dot" style="background:var(--cyan)"></span>性偏好疾患 / 其他疾患盛行率</div>
+<table class="prev">
+<thead><tr><th>疾患</th><th>盛行率</th><th>性別</th><th>備注</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>窺視症 Voyeuristic</strong></td>
+  <td>窺視行為（魁北克）終生：<span class="num">34.5%</span><br>（男50.3%，女21.2%）<br>疾患盛行率遠低</td>
+  <td class="pill pill-m">男：女 ≈ 2:1–3:1</td>
+  <td>持續強烈慾望：9.6%；行為持續：2.1% → 疾患估計更低</td>
+</tr>
+<tr>
+  <td><strong>暴露症 Exhibitionistic</strong></td>
+  <td>行為（魁北克）終生：<span class="num">30.9%</span><br>（男32.6%，女29.4%）</td>
+  <td>—</td>
+  <td>瑞典：疾患終生4.1%（男）；疾患遠低於行為盛行率</td>
+</tr>
+<tr>
+  <td><strong>磨蹭症 Frotteuristic</strong></td>
+  <td>成人男（美/加）：達<span class="num">30%</span>有此行為<br>門診性偏好疾患：<span class="num">10%–14%</span></td>
+  <td>—</td>
+  <td>強烈慾望：3.8%；疾患估計更低</td>
+</tr>
+<tr>
+  <td><strong>性受虐症 Masochistic</strong></td>
+  <td>澳洲過去12月BDSM：男<span class="num">2.2%</span>，女<span class="num">1.3%</span></td>
+  <td>—</td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>性施虐症 Sadistic</strong></td>
+  <td>性暴力犯受刑人：&lt;<span class="num">10%</span><br>芬蘭終生性施虐行為：男2.7%，女2.3%</td>
+  <td>—</td>
+  <td>鑑識樣本幾乎全男性</td>
+</tr>
+<tr>
+  <td><strong>戀童症 Pedophilic</strong></td>
+  <td>男性：&lt;<span class="num">3%</span></td>
+  <td>—</td>
+  <td>女性極罕見</td>
+</tr>
+<tr>
+  <td><strong>異裝症 Transvestic</strong></td>
+  <td>瑞典男性曾有性興奮異裝：&lt;<span class="num">3%</span></td>
+  <td>—</td>
+  <td>幾乎僅見於男性</td>
+</tr>
+</tbody>
+</table>
+
+<div class="card" style="margin-top:1rem">
+<div class="card-title">🔬 Section III（研究條件）盛行率</div>
+<table class="prev">
+<thead><tr><th>條件</th><th>盛行率</th><th>備注</th></tr></thead>
+<tbody>
+<tr><td><strong>衰弱精神病症候群 Attenuated Psychosis</strong></td><td>非求助者（瑞士）：<span class="num">0.3%</span>；A準則症狀：<span class="num">2.3%</span><br>一般族群幻覺/妄想（輕微）：<span class="num">7%</span></td><td>移民族群盛行率較高</td></tr>
+<tr><td><strong>短暫輕躁憂鬱症</strong></td><td>約<span class="num">6.7%</span>（寬鬆定義，美國）</td><td>比Bipolar I/II更常見</td></tr>
+<tr><td><strong>咖啡因使用疾患（擬議）</strong></td><td>佛蒙特州：<span class="num">9%</span>；代表樣本：<span class="num">8%</span>；青少年：<span class="num">3.9%</span></td><td></td></tr>
+<tr><td><strong>網路遊戲疾患（擬議）</strong></td><td>全球12月均：<span class="num">4.7%</span>（0.7%–15.6%）<br>美國：<span class="num">~1%</span>；青少年：<span class="num">4.6%</span></td><td>男(6.8%)>女(1.3%)</td></tr>
+<tr><td><strong>非自殺性自傷疾患（擬議）</strong></td><td>—</td><td>女略高於男；雙性戀者最高</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</main>
+
+<footer>
+  DSM-5-TR 盛行率完整參考表 · 資料來源：APA DSM-5-TR (2022) · 僅供學術研究與考試準備<br>
+  數據反映原文獻報告，不同研究方法可能導致差異 · 祝臨床心理師國考順利 🎯
+</footer>
+
+<script>
+function T(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  var sec=document.getElementById('sec-'+id);
+  if(sec){sec.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    if(b.getAttribute('onclick').includes("'"+id+"'"))b.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>
