@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSM-5 神經發展障礙症 系統整理</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #232636;
+    --border: #2e3248;
+    --accent: #6c8ef7;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --warn: #fbbf24;
+    --danger: #f87171;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-muted: #64748b;
+    --tag-bg: rgba(108,142,247,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #1a1d27 0%, #12152a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-title { flex: 1 1 300px; }
+  .header-title h1 { font-size: 20px; font-weight: 700; color: var(--text); }
+  .header-title p { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  /* ── Nav pills ── */
+  .nav-pills {
+    display: flex; flex-wrap: wrap; gap: 6px; padding: 0 24px 14px;
+    background: #12152a; border-bottom: 1px solid var(--border);
+    position: sticky; top: 73px; z-index: 99; overflow-x: auto;
+  }
+  .nav-pill {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 5px 14px; font-size: 12px; cursor: pointer; color: var(--text-dim);
+    white-space: nowrap; transition: all .2s; font-weight: 500;
+  }
+  .nav-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* ── Layout ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 20px 20px 60px; }
+
+  /* ── Disorder cards ── */
+  .disorder-section {
+    border: 1px solid var(--border); border-radius: 12px; margin-bottom: 24px;
+    overflow: hidden; background: var(--surface);
+  }
+  .disorder-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; cursor: pointer; gap: 12px;
+    background: linear-gradient(90deg, var(--surface2) 0%, var(--surface) 100%);
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+  }
+  .disorder-header:hover { background: var(--surface2); }
+  .disorder-header-left { display: flex; align-items: center; gap: 12px; }
+  .disorder-num {
+    background: var(--tag-bg); border: 1px solid var(--accent);
+    color: var(--accent); border-radius: 6px; padding: 2px 8px;
+    font-size: 11px; font-weight: 700; font-family: monospace; white-space: nowrap;
+  }
+  .disorder-name { font-size: 16px; font-weight: 700; }
+  .disorder-name-en { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+  .collapse-btn {
+    background: none; border: none; color: var(--text-dim); cursor: pointer;
+    font-size: 18px; padding: 0 4px; transition: transform .25s;
+  }
+  .collapse-btn.open { transform: rotate(180deg); }
+
+  .disorder-body { display: block; }
+  .disorder-body.hidden { display: none; }
+
+  /* ── Section tabs ── */
+  .section-tabs {
+    display: flex; flex-wrap: wrap; gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg); overflow-x: auto;
+  }
+  .sec-tab {
+    padding: 8px 14px; font-size: 12px; cursor: pointer; color: var(--text-dim);
+    border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: all .15s; background: none; border-top: none; border-left: none; border-right: none;
+  }
+  .sec-tab:hover { color: var(--text); background: var(--surface2); }
+  .sec-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .sec-tab.important { color: var(--warn); }
+  .sec-tab.important.active { border-bottom-color: var(--warn); }
+
+  .tab-panel { display: none; padding: 16px 20px; }
+  .tab-panel.active { display: block; }
+
+  /* ── Content blocks ── */
+  .criteria-box {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; margin-bottom: 10px;
+  }
+  .criteria-label {
+    font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase;
+    letter-spacing: .05em; margin-bottom: 8px;
+  }
+  .criteria-box.warn { border-left: 3px solid var(--warn); }
+  .criteria-box.danger { border-left: 3px solid var(--danger); }
+  .criteria-box.success { border-left: 3px solid var(--accent3); }
+  .criteria-box.info { border-left: 3px solid var(--accent); }
+  .criteria-box.purple { border-left: 3px solid var(--accent2); }
+
+  .rule { margin-bottom: 10px; }
+  .rule-letter {
+    display: inline-block; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-size: 11px; font-weight: 700;
+    text-align: center; line-height: 22px; margin-right: 8px; flex-shrink: 0;
+  }
+  .rule-letter.warn { background: var(--warn); color: #1a1a1a; }
+  .rule-letter.danger { background: var(--danger); }
+  .rule-row { display: flex; align-items: flex-start; }
+  .rule-content { flex: 1; }
+
+  ul.content-list {
+    padding-left: 18px; color: var(--text);
+  }
+  ul.content-list li { margin-bottom: 5px; }
+  ul.content-list li::marker { color: var(--accent); }
+
+  .diff-item {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 14px; margin-bottom: 8px;
+  }
+  .diff-name { font-weight: 700; color: var(--accent2); font-size: 13px; margin-bottom: 4px; }
+  .diff-content { color: var(--text-dim); font-size: 13px; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .stat-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;
+  }
+  .stat-val { font-size: 20px; font-weight: 700; color: var(--accent3); }
+  .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px;
+         font-weight: 600; margin: 2px; }
+  .tag-blue { background: rgba(108,142,247,.15); color: var(--accent); }
+  .tag-green { background: rgba(52,211,153,.15); color: var(--accent3); }
+  .tag-warn { background: rgba(251,191,36,.15); color: var(--warn); }
+  .tag-red { background: rgba(248,113,113,.15); color: var(--danger); }
+  .tag-purple { background: rgba(167,139,250,.15); color: var(--accent2); }
+
+  p.desc { color: var(--text-dim); line-height: 1.7; margin-bottom: 10px; }
+  p.desc + p.desc { margin-top: 0; }
+
+  h4.sub { font-size: 13px; font-weight: 700; color: var(--accent); margin: 12px 0 6px; }
+
+  .important-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(251,191,36,.1); border: 1px solid var(--warn);
+    color: var(--warn); border-radius: 4px; padding: 2px 8px; font-size: 11px;
+    font-weight: 700; margin-bottom: 8px;
+  }
+
+  .specifier-box {
+    background: rgba(167,139,250,.06); border: 1px solid rgba(167,139,250,.3);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 10px;
+  }
+  .specifier-title { font-weight: 700; color: var(--accent2); font-size: 13px; margin-bottom: 4px; }
+
+  table.compact { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.compact th { background: var(--surface2); color: var(--text-dim); font-size: 11px;
+                     text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); }
+  table.compact td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.compact tr:last-child td { border-bottom: none; }
+  table.compact tr:hover td { background: var(--surface2); }
+
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .overview-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px;
+    text-align: center;
+  }
+  .overview-icon { font-size: 28px; margin-bottom: 6px; }
+  .overview-label { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+  .overview-val { font-size: 14px; font-weight: 700; color: var(--text); }
+
+  .toc {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .toc-title { font-weight: 700; color: var(--accent); margin-bottom: 10px; font-size: 14px; }
+  .toc-list { list-style: none; }
+  .toc-list li { margin-bottom: 4px; }
+  .toc-list a { color: var(--text-dim); text-decoration: none; font-size: 13px; }
+  .toc-list a:hover { color: var(--accent); }
+
+  .info-banner {
+    background: rgba(108,142,247,.08); border: 1px solid rgba(108,142,247,.3);
+    border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; font-size: 13px; color: var(--text-dim);
+  }
+  .info-banner strong { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .header { padding: 14px 16px 12px; }
+    .nav-pills { padding: 0 12px 12px; }
+    .main { padding: 14px 12px 40px; }
+    .tab-panel { padding: 14px; }
+    .disorder-name { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">
+    <h1>🧠 DSM-5 神經發展障礙症 系統整理</h1>
+    <p>臨床心理師國考備考 | 診斷準則 · 鑑別診斷 · 盛行率 · 共病 完整版</p>
+  </div>
+</div>
+
+<div class="nav-pills">
+  <span class="nav-pill active" onclick="filterDisorder('all')">全部障礙症</span>
+  <span class="nav-pill" onclick="filterDisorder('id')">智能不足</span>
+  <span class="nav-pill" onclick="filterDisorder('comm')">溝通障礙症</span>
+  <span class="nav-pill" onclick="filterDisorder('asd')">自閉症類群</span>
+  <span class="nav-pill" onclick="filterDisorder('adhd')">ADHD</span>
+  <span class="nav-pill" onclick="filterDisorder('sld')">特定學習障礙</span>
+  <span class="nav-pill" onclick="filterDisorder('motor')">動作障礙症</span>
+</div>
+
+<div class="main">
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-title">📋 本章節障礙症一覽</div>
+  <ul class="toc-list">
+    <li>① <a href="#id">智能不足（智能發展障礙症）</a> — IQ ≤ 70 + 適應功能缺損 + 發展期</li>
+    <li>② <a href="#lang">語言障礙症</a> — 接受/表達語言持續缺損</li>
+    <li>③ <a href="#ssd">言語發音障礙症</a> — 發音清晰度缺陷</li>
+    <li>④ <a href="#stutter">兒童期初發型語暢障礙症（口吃）</a> — 流暢度障礙</li>
+    <li>⑤ <a href="#spcd">社交（語用）溝通障礙症</a> — 語用學缺損，無重複行為</li>
+    <li>⑥ <a href="#asd">自閉症類群障礙症（ASD）</a> — 社交溝通缺損 + 限制重複行為</li>
+    <li>⑦ <a href="#adhd">注意力不足/過動症（ADHD）</a> — 不專注、過動/衝動</li>
+    <li>⑧ <a href="#sld">特定學習障礙症</a> — 閱讀、書寫、數學特定缺損</li>
+    <li>⑨ <a href="#dcd">動作協調發展障礙症</a> — 動作協調能力缺損</li>
+    <li>⑩ <a href="#smd">重複動作障礙症</a> — 重複、無目的動作</li>
+    <li>⑪ <a href="#tic">抽搐症（妥瑞氏症等）</a> — 動作/發聲抽搐</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════ 1. 智能不足 ══════════════════════════════ -->
+<div class="disorder-section" id="id" data-cat="id">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">317–319</span>
+      <div>
+        <div class="disorder-name">智能不足（智能發展障礙症）</div>
+        <div class="disorder-name-en">Intellectual Disability (Intellectual Developmental Disorder)</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'id-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-spec')">特別註明</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-assoc')">支持診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-dev')">發展病程</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-risk')">風險預後</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-gender')">性別議題</button>
+      <button class="sec-tab important" onclick="switchTab(this,'id-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'id-comor')">共病</button>
+    </div>
+
+    <!-- 診斷準則 -->
+    <div class="tab-panel active" id="id-dx">
+      <div class="important-badge">⭐ 國考重點</div>
+      <div class="info-banner"><strong>三準則全須符合：A + B + C</strong>（缺一不可）</div>
+      <div class="rule">
+        <div class="rule-row"><span class="rule-letter">A</span>
+          <div class="rule-content"><strong>智力功能缺損</strong>：推論、解決問題、計畫、抽象思考、判斷、學業學習、經驗學習——由臨床評估及個別標準化智力測驗確認（IQ ≈ 70±5以下，即均值以下 ≥2 SD）</div>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-row"><span class="rule-letter">B</span>
+          <div class="rule-content"><strong>適應功能缺損</strong>：在概念、社會、實務三領域至少一領域，無法達到發展及社會文化準則，影響獨立性與社會責任承擔（家庭、學校、工作、社區）</div>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-row"><span class="rule-letter">C</span>
+          <div class="rule-content"><strong>發展期間發生</strong>：智力與適應缺損於兒童或青春期出現</div>
+        </div>
+      </div>
+      <h4 class="sub">嚴重程度分類</h4>
+      <table class="compact">
+        <tr><th>等級</th><th>ICD碼</th><th>DSM碼</th><th>依據</th></tr>
+        <tr><td><span class="tag tag-green">輕度</span></td><td>F70</td><td>317</td><td>適應功能缺損（非IQ分數）</td></tr>
+        <tr><td><span class="tag tag-warn">中度</span></td><td>F71</td><td>318.0</td><td>適應功能缺損</td></tr>
+        <tr><td><span class="tag tag-red">重度</span></td><td>F72</td><td>318.1</td><td>適應功能缺損</td></tr>
+        <tr><td><span class="tag tag-red">極重度</span></td><td>F73</td><td>318.2</td><td>適應功能缺損</td></tr>
+      </table>
+      <div class="criteria-box warn">
+        <div class="criteria-label">⚠️ 重要原則</div>
+        嚴重程度以<strong>適應功能</strong>為依據，<u>非以IQ分數</u>決定（因IQ低端測量信度較低）
+      </div>
+    </div>
+
+    <!-- 特別註明 -->
+    <div class="tab-panel" id="id-spec">
+      <div class="specifier-box">
+        <div class="specifier-title">輕度（Mild）</div>
+        <ul class="content-list">
+          <li>概念：閱讀、書寫、算數、時間金錢困難；成人有抽象思考、執行功能、短期記憶減損</li>
+          <li>社會：社交不成熟，對風險判斷不足，易受他人操控</li>
+          <li>實務：自我照顧多達適齡；購物、交通、金融管理需支援；可競爭性就業（低概念技能工作場域）</li>
+        </ul>
+      </div>
+      <div class="specifier-box">
+        <div class="specifier-title">中度（Moderate）</div>
+        <ul class="content-list">
+          <li>概念：學業技能明顯落後同儕；至成人期僅達小學程度；日常概念運作需每日持續支援</li>
+          <li>社會：可與家人朋友建立關係；可能無法正確解讀社交訊息；照顧者需協助做重要決定</li>
+          <li>實務：自我照顧需長期教導；工作需持續支援（如排程、金錢管理）</li>
+        </ul>
+      </div>
+      <div class="specifier-box">
+        <div class="specifier-title">重度（Severe）</div>
+        <ul class="content-list">
+          <li>概念：極有限的概念技能；幾乎不懂書寫文字或數量概念</li>
+          <li>社會：言語極有限（單字/語詞）；可能需輔助工具；了解簡單指令</li>
+          <li>實務：所有日常活動需支援；需全時督導照護</li>
+        </ul>
+      </div>
+      <div class="specifier-box">
+        <div class="specifier-title">極重度（Profound）</div>
+        <ul class="content-list">
+          <li>概念：涉及實體世界而非象徵歷程；目標導向使用物件；視覺空間配對</li>
+          <li>社會：對語言或手勢符號溝通了解非常有限；大多以非語言/非符號方式表達</li>
+          <li>實務：所有身體照顧、健康、安全皆依賴他人</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 診斷特質 -->
+    <div class="tab-panel" id="id-feat">
+      <p class="desc">智力功能包括推論、解決問題、計畫、抽象思考、判斷、學習及實際理解力。關鍵成份含語言理解、工作記憶、知覺理解力、定量理解力、抽象思考及認知功效。</p>
+      <div class="criteria-box info">
+        <div class="criteria-label">IQ測驗注意事項</div>
+        <ul class="content-list">
+          <li>IQ低於均值2個SD（≈ 70±5）；須考量測量標準誤（±5分）</li>
+          <li>弗林效應（Flynn effect）：過時題目造成IQ分數逐年虛增</li>
+          <li>次測驗分數高度差異時，全量表IQ分數可能失效</li>
+          <li>IQ 70以上者仍可能因適應功能缺損而符合診斷</li>
+        </ul>
+      </div>
+      <p class="desc">適應功能評估三領域：</p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">概念</div><div class="stat-label">記憶、語言、閱讀、算數、問題解決</div></div>
+        <div class="stat-card"><div class="stat-val">社會</div><div class="stat-label">同理心、人際溝通、友誼、社會判斷</div></div>
+        <div class="stat-card"><div class="stat-val">實務</div><div class="stat-label">自我照顧、金錢管理、工作、娛樂</div></div>
+      </div>
+    </div>
+
+    <!-- 支持診斷 -->
+    <div class="tab-panel" id="id-assoc">
+      <ul class="content-list">
+        <li>社會判斷、風險評估能力缺損</li>
+        <li>易受騙（Gullibility）：天真、易被他人指使 → 被剝削、被欺詐、非意圖式犯罪、假招供</li>
+        <li>溝通技能缺乏 → 搗亂或侵犯性行為</li>
+        <li>合併心理疾患時自殺風險較高（需篩檢）</li>
+        <li>缺乏危機意識 → 意外受傷比率較高</li>
+      </ul>
+    </div>
+
+    <!-- 盛行率 -->
+    <div class="tab-panel" id="id-prev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">~1%</div><div class="stat-label">一般社會大眾盛行率</div></div>
+        <div class="stat-card"><div class="stat-val">6‰</div><div class="stat-label">嚴重智能不足盛行率</div></div>
+      </div>
+      <p class="desc">盛行率隨不同年齡層有所不同。</p>
+    </div>
+
+    <!-- 發展病程 -->
+    <div class="tab-panel" id="id-dev">
+      <p class="desc">發病於發展階段。較嚴重者於前兩年即出現動作、語言、社會發展里程延遲；較輕微者可能到學齡才因學業困難趨於明顯。</p>
+      <ul class="content-list">
+        <li>5歲以下：可先診斷「整體發展遲緩」，提供介入後再重新評估</li>
+        <li>與遺傳症候群相關時可能有特定行為表現型（behavioral phenotype），如萊希－尼亨症候群</li>
+        <li>後天成因（腦膜炎、頭部外傷）可與神經認知障礙症同時診斷</li>
+        <li>一般為非進展式，但部分遺傳疾患（如雷特氏症）可能惡化</li>
+        <li>早期且不間斷介入可改善適應功能；須判別改善是新技能習得（可移除診斷）或介入維持（維持診斷）</li>
+      </ul>
+    </div>
+
+    <!-- 風險預後 -->
+    <div class="tab-panel" id="id-risk">
+      <h4 class="sub">遺傳與生理（產前、產中、產後）</h4>
+      <table class="compact">
+        <tr><th>時期</th><th>風險因子</th></tr>
+        <tr><td>產前</td><td>遺傳症候群（染色體異常、複製數目變異）、先天代謝異常、腦發育異常、母體疾病、環境毒素（酒精、藥物）</td></tr>
+        <tr><td>產中</td><td>產程相關事件 → 新生兒腦病變</td></tr>
+        <tr><td>產後</td><td>缺氧缺血性損傷、創傷性腦損傷、感染、去髓鞘疾患、嬰兒痙攣症、嚴重社交剝奪、鉛汞中毒</td></tr>
+      </table>
+    </div>
+
+    <!-- 性別議題 -->
+    <div class="tab-panel" id="id-gender">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">1.6:1</div><div class="stat-label">輕度 男:女 診斷比</div></div>
+        <div class="stat-card"><div class="stat-val">1.2:1</div><div class="stat-label">重度 男:女 診斷比</div></div>
+      </div>
+      <p class="desc">男性被診斷可能性較高。性別相關遺傳因素（如X染色體連鎖疾患）及男性較易遭受腦損傷，可部分解釋性別差異。性別比率在研究文獻中差異甚大。</p>
+    </div>
+
+    <!-- 鑑別診斷 -->
+    <div class="tab-panel" id="id-diff">
+      <div class="important-badge">⭐ 國考重點</div>
+      <div class="diff-item">
+        <div class="diff-name">重度/輕度神經認知障礙症</div>
+        <div class="diff-content">智能不足屬神經發展障礙症（發展期）；神經認知障礙症為認知功能「喪失」。可同時診斷（如唐氏症合併阿茲海默症）。</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-name">溝通障礙症 / 特定學習障礙症</div>
+        <div class="diff-content">表現於特定溝通或學習領域，無全面智能和適應行為缺陷。若同時符合兩診斷準則，<strong>可同時給予</strong>。</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-name">自閉症類群障礙症（ASD）</div>
+        <div class="diff-content">ASD常見於智能不足患者；兩者常並存。智力評估可能因ASD的社交/溝通缺損而複雜化，需適當評估並視情況重新評估。共病診斷時：社交溝通能力應低於一般發展程度預期水平。</div>
+      </div>
+    </div>
+
+    <!-- 共病 -->
+    <div class="tab-panel" id="id-comor">
+      <p class="desc">智能不足常合併精神、神經發展、醫療和身體方面問題，某些問題比一般人高出<strong>3–4倍</strong>。</p>
+      <div class="criteria-box info">
+        <div class="criteria-label">最常見共病</div>
+        <ul class="content-list">
+          <li>注意力不足/過動症（ADHD）</li>
+          <li>憂鬱症、躁鬱症</li>
+          <li>焦慮症</li>
+          <li>自閉症類群障礙症（ASD）</li>
+          <li>重複動作障礙症（有/無自傷行為）</li>
+          <li>衝動控制障礙症</li>
+          <li>重度神經認知障礙症</li>
+          <li>腦性麻痺、癲癇（比一般人高3–4倍）</li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- end disorder-body -->
+</div>
+
+<!-- ══════════════════════════════ 2. 語言障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="lang" data-cat="comm">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.39 F80.2</span>
+      <div>
+        <div class="disorder-name">語言障礙症</div>
+        <div class="disorder-name-en">Language Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'lang-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'lang-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'lang-assoc')">支持診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'lang-dev')">發展病程</button>
+      <button class="sec-tab" onclick="switchTab(this,'lang-risk')">風險預後</button>
+      <button class="sec-tab important" onclick="switchTab(this,'lang-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'lang-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="lang-dx">
+      <div class="important-badge">⭐ 四準則</div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">語言理解或產出缺損，造成接收及使用各種語言形式（口語、書寫、手語）持續困難：<ul class="content-list" style="margin-top:6px"><li>字彙不足</li><li>有限的語句結構（文法）</li><li>述說障礙（話語/會話能力）</li></ul></div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">相較年齡應有語言能力有相當大落差，造成有效溝通、社會參與、學業或職業功能受限</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在早期發展階段出現</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">無法歸因於聽覺/感官障礙、動作障礙、身體或神經病況；無法以智能不足或整體發展遲緩更好解釋</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="lang-feat">
+      <p class="desc">語言缺陷可表現於口語、書面或手語溝通。語言技能須分別評估表達與接受兩方面（嚴重程度可不同）。</p>
+      <ul class="content-list">
+        <li>詞彙量小、詞彙多樣性低</li>
+        <li>句子短且不複雜、語法錯誤（特別是過去式）</li>
+        <li>語言理解缺陷常被低估（兒童善用上下文推斷）</li>
+        <li>單字尋找困難；記憶新單詞和句子困難</li>
+        <li>述說故事/提供充分資訊的能力下降</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="lang-assoc">
+      <ul class="content-list">
+        <li>常見陽性家族史</li>
+        <li>個案可能因有限語言而發展出適應方式（害羞、沉默寡言）</li>
+        <li>可能只願與家人或熟悉的人溝通</li>
+        <li>表達能力缺陷可能共同發生言語發音障礙症</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="lang-dev">
+      <ul class="content-list">
+        <li>發病於早期發育階段；4歲以前個體差異大，難精確診斷</li>
+        <li><strong>4歲之後</strong>語言能力差異趨於穩定，預後預測性高</li>
+        <li>4歲後的診斷通常隨時間穩定，常持續至成年</li>
+        <li>接受型語言障礙預後較表達型差</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="lang-risk">
+      <div class="criteria-box info">
+        <div class="criteria-label">遺傳與生理</div>
+        語言障礙是<strong>高度遺傳的</strong>，家庭成員可能有語言障礙病史。接受型語言障礙兒童比主要表達型有較差預後，對治療反應更差，常見閱讀理解困難。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="lang-diff">
+      <div class="important-badge">⭐ 鑑別重點</div>
+      <div class="diff-item"><div class="diff-name">語言的正常變化</div><div class="diff-content">語言的區域、社會、文化/種族差異（如方言）須考量。4歲以前鑑別困難。</div></div>
+      <div class="diff-item"><div class="diff-name">聽覺或其他感覺障礙</div><div class="diff-content">排除聽力損傷為主要原因。若語言缺陷明顯嚴重於聽覺障礙伴隨程度，可考慮語言障礙症診斷。</div></div>
+      <div class="diff-item"><div class="diff-name">智能不足</div><div class="diff-content">語言延遲常是智能不足的特徵。通常不給額外語言障礙症診斷，<strong>除非語言缺陷明顯嚴重於智能限制程度</strong>。</div></div>
+      <div class="diff-item"><div class="diff-name">神經系統疾病（蘭道－克雷夫症候群）</div><div class="diff-content">語言障礙可伴隨癲癇。3歲以下退化提示ASD或特定神經疾患。</div></div>
+    </div>
+
+    <div class="tab-panel" id="lang-comor">
+      <ul class="content-list">
+        <li>特定學習障礙症（識字和算術）</li>
+        <li>注意力不足/過動症（ADHD）</li>
+        <li>自閉症類群障礙症（ASD）</li>
+        <li>動作協調發展障礙症</li>
+        <li>社交（語用）溝通障礙症</li>
+        <li>陽性家族史（言語或語言障礙）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 3. 言語發音障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="ssd" data-cat="comm">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.39 F80.0</span>
+      <div>
+        <div class="disorder-name">言語發音障礙症</div>
+        <div class="disorder-name-en">Speech Sound Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'ssd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'ssd-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'ssd-dev')">發展病程</button>
+      <button class="sec-tab important" onclick="switchTab(this,'ssd-diff')">⭐ 鑑別診斷</button>
+    </div>
+
+    <div class="tab-panel active" id="ssd-dx">
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">言語發音持續有困難，以致影響語言清晰度或無法以口語溝通訊息</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">有效溝通受限，造成社會參與、學業或職業表現上的阻礙</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在早期發展階段出現</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">無法歸因於先天或後天病況：腦麻痺、顎裂、耳聾/聽覺障礙、外傷性腦傷或其他身體/神經病況</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="ssd-feat">
+      <div class="criteria-box info">
+        <div class="criteria-label">正常發展里程碑</div>
+        <ul class="content-list">
+          <li>2歲：約50%言語可理解</li>
+          <li>3歲：大部分言語應可被理解</li>
+          <li>4歲：整體言語應可被理解</li>
+          <li>7歲：大部分聲音和單字應正確發音；「晚八音」（l, r, s, z, th, ch, dzh, zh）發音錯誤在8歲前屬正常範圍</li>
+        </ul>
+      </div>
+      <p class="desc">背後機制異質：包括語音障礙和構音障礙。口齒不清（lisping）特別常見，可能與異常舌頭推力吞嚥模式有關。</p>
+    </div>
+
+    <div class="tab-panel" id="ssd-dev">
+      <p class="desc">大多數患者對治療反應良好，言語困難隨時間改善，可非終身疾患。<strong>若同時存在語言障礙症，預後較差</strong>，可能伴隨特定學習障礙症。</p>
+    </div>
+
+    <div class="tab-panel" id="ssd-diff">
+      <div class="diff-item"><div class="diff-name">正常言語變化</div><div class="diff-content">考量區域、社會、文化/種族差異。</div></div>
+      <div class="diff-item"><div class="diff-name">聽覺或感覺障礙</div><div class="diff-content">聽力障礙可導致言語不正常。缺損明顯嚴重於一般聽覺障礙伴隨程度時，可考慮言語發音障礙症。</div></div>
+      <div class="diff-item"><div class="diff-name">結構性缺陷</div><div class="diff-content">顎裂（cleft palate）可導致言語障礙。</div></div>
+      <div class="diff-item"><div class="diff-name">構音障礙（Dysarthria）</div><div class="diff-content">歸因於運動障礙（如腦性麻痺）。神經系統症狀及獨特語音特色可以區分；3歲以下可能困難鑑別（如Worster-Drought症候群）。</div></div>
+      <div class="diff-item"><div class="diff-name">選擇性緘默症</div><div class="diff-content">言語使用受限，為焦慮症。可能共同發生（言語障礙令個案尷尬）；但選擇性緘默症患者在「安全」情境（如在家）通常說話正常。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 4. 口吃 ══════════════════════════════ -->
+<div class="disorder-section" id="stutter" data-cat="comm">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.35 F80.81</span>
+      <div>
+        <div class="disorder-name">兒童期初發型語暢障礙症（口吃）</div>
+        <div class="disorder-name-en">Childhood-Onset Fluency Disorder (Stuttering)</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'st-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'st-dev')">發展病程</button>
+      <button class="sec-tab" onclick="switchTab(this,'st-risk')">風險預後</button>
+      <button class="sec-tab important" onclick="switchTab(this,'st-diff')">⭐ 鑑別診斷</button>
+    </div>
+
+    <div class="tab-panel active" id="st-dx">
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">說話流暢度與節奏的持續阻滯（不符年齡及語言技巧），頻繁出現下列一項以上：
+        <ul class="content-list" style="margin-top:6px">
+          <li>重複某些音和音節</li>
+          <li>拉長子音和母音</li>
+          <li>斷字（字中停頓）</li>
+          <li>有聲或無聲的阻斷</li>
+          <li>贅述（繞道用詞）</li>
+          <li>發音過分用力</li>
+          <li>重覆單音節字（如「我、我、我看到他」）</li>
+        </ul>
+      </div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">導致說話焦慮，或有效溝通、社會參與、學業/職業表現受限</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在早期發展階段出現（晚發型：307.0 F98.5 成年期初發型語暢障礙症）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">無法歸因於語言-動作/感官缺損、神經創傷（中風、腫瘤、創傷）或其他身體病況/精神障礙症</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="st-dev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">80–90%</div><div class="stat-label">6歲時出現症狀</div></div>
+        <div class="stat-card"><div class="stat-val">2–7歲</div><div class="stat-label">發病年齡範圍</div></div>
+        <div class="stat-card"><div class="stat-val">65–85%</div><div class="stat-label">兒童自然恢復率</div></div>
+      </div>
+      <p class="desc">8歲時的嚴重程度可預測日後是否恢復或持續至青春期以後。不流暢在有壓力要溝通時更嚴重（如發表報告、面試）；朗讀、唱歌或對無生命物體說話時常改善。</p>
+    </div>
+
+    <div class="tab-panel" id="st-risk">
+      <div class="criteria-box info">
+        <div class="criteria-label">遺傳與生理</div>
+        一等親屬有口吃的風險是一般人的<strong>3倍以上</strong>。壓力和焦慮會加劇言語不流暢，可能導致社交功能損害。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="st-diff">
+      <div class="diff-item"><div class="diff-name">感覺缺陷</div><div class="diff-content">言語不流暢可與聽力障礙/感覺缺陷/言語動作缺陷相關聯。缺損明顯嚴重於障礙伴隨程度時可考慮。</div></div>
+      <div class="diff-item"><div class="diff-name">正常言語不流暢</div><div class="diff-content">幼兒正常不流暢：全單字/片語重複（「我要，我要冰淇淋」）、不完整片語、插入詞。若隨年齡增長更頻繁/複雜則符合口吃診斷。</div></div>
+      <div class="diff-item"><div class="diff-name">藥物副作用</div><div class="diff-content">可能為藥物造成，透過藥物使用與症狀相對出現時間的暫時性關係發現。</div></div>
+      <div class="diff-item"><div class="diff-name">成人初發型言語不流暢</div><div class="diff-content">青春期後發病，與特定神經損傷/醫學狀況相關，<strong>非DSM-5神經發展障礙症</strong>。</div></div>
+      <div class="diff-item"><div class="diff-name">妥瑞氏症</div><div class="diff-content">發聲抽搐與回音語需透過其性質和發作時機區分口吃的重複性發音。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 5. 社交語用溝通障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="spcd" data-cat="comm">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.39 F80.82</span>
+      <div>
+        <div class="disorder-name">社交（語用）溝通障礙症</div>
+        <div class="disorder-name-en">Social (Pragmatic) Communication Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'spcd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'spcd-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'spcd-dev')">發展病程</button>
+      <button class="sec-tab important" onclick="switchTab(this,'spcd-diff')">⭐ 鑑別診斷</button>
+    </div>
+
+    <div class="tab-panel active" id="spcd-dx">
+      <div class="important-badge">⭐ 與ASD鑑別關鍵：無限制重複行為</div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">在社交上使用語言及非語言溝通時持續有困難，表現下列<strong>全部</strong>：
+        <ul class="content-list" style="margin-top:6px">
+          <li>社交溝通目的缺損（適切打招呼、分享資訊）</li>
+          <li>依情境/聽者需求調節溝通的能力減損（教室vs操場、成人vs兒童）</li>
+          <li>遵循對話/述說規則困難（輪流說話、被誤解時重新敘述）</li>
+          <li>理解非明確陳述（推論）及非精確語言（成語、幽默、隱喻）困難</li>
+        </ul>
+      </div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">缺陷導致有效溝通、社會參與、學業成就或職場表現受限</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在早期發展階段出現（需求超過受限能力時才完全顯現）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">無法歸因於身體/神經病況、字句文法低下；無法以<strong>ASD、智能不足、整體發展遲緩或其他精神障礙</strong>更好解釋</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="spcd-feat">
+      <p class="desc">核心特徵：語用學（pragmatics）困難，即語言和溝通的社交使用困難。無法依上下文理解和遵循語言/非語言社交溝通規則；無法根據聽者或情況改變語言使用；無法遵循社交溝通規則。</p>
+      <div class="criteria-box warn">
+        <div class="criteria-label">⚠️ 與ASD最關鍵區別</div>
+        社交（語用）溝通障礙症：<strong>缺乏限制性重複行為、興趣或活動模式</strong><br>
+        若過去發展史有受限興趣和重複行為，即使目前缺乏，仍不能排除ASD。<br>
+        <strong>只有在過往發展史中完全未揭示任何限制重複行為/興趣/活動時，才考慮此診斷。</strong>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="spcd-dev">
+      <ul class="content-list">
+        <li>罕見在小於4歲兒童中診斷（依賴言語和語言適當發展）</li>
+        <li>到4–5歲大多兒童才能顯現特定社交溝通缺陷</li>
+        <li>較輕微者可能到青春期早期才出現明顯症狀（當語言和社交互動更複雜時）</li>
+        <li>預後不一：部分兒童逐漸改善，其他則持續至成年</li>
+        <li>早期語用學缺陷可能導致社會關係和行為的持久損害</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="spcd-diff">
+      <div class="diff-item"><div class="diff-name">⭐ 自閉症類群障礙症（ASD）</div><div class="diff-content"><strong>ASD是首要考慮的診斷</strong>。區別：ASD有限制/重複的行為、興趣或活動模式（SPCD沒有）。須獲取全面過往發展史。即使目前無相關症狀，若過往有受限興趣和重複行為，不能排除ASD。</div></div>
+      <div class="diff-item"><div class="diff-name">注意力不足/過動症（ADHD）</div><div class="diff-content">ADHD可能造成社交溝通功能損傷和有效溝通/社會參與/學習成就的功能限制。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 社交焦慮症</div><div class="diff-content">兩者症狀重疊。關鍵區別：<br>• SPCD：從未有過有效的社交溝通<br>• 社交焦慮症：社交溝通技能有適當發展，但因焦慮、恐懼、窘迫而無法運用</div></div>
+      <div class="diff-item"><div class="diff-name">智能不足 / 整體發展遲緩</div><div class="diff-content">社交溝通技巧缺陷可見於此族群，通常不給額外SPCD診斷，<strong>除非缺陷明顯比智能限制伴隨程度更嚴重</strong>。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 6. ASD ══════════════════════════════ -->
+<div class="disorder-section" id="asd" data-cat="asd">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">299.00 F84.0</span>
+      <div>
+        <div class="disorder-name">自閉症類群障礙症（ASD）</div>
+        <div class="disorder-name-en">Autism Spectrum Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'asd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-spec')">特別註明</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-dev')">發展病程</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-risk')">風險預後</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-gender')">性別議題</button>
+      <button class="sec-tab important" onclick="switchTab(this,'asd-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'asd-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="asd-dx">
+      <div class="important-badge">⭐ 國考核心：A(全部) + B(≥2) + C + D + E</div>
+      <div class="criteria-box info">
+        <div class="criteria-label">準則A — 社交溝通及社交互動缺損（三項全需符合）</div>
+        <ul class="content-list">
+          <li>社會—情緒相互性缺損（異常社交接觸、無法正常一來一往會話、無法分享興趣/情緒、無法開啟/回應社交互動）</li>
+          <li>用於社交互動的非語言溝通行為缺損（語言/非語言溝通整合不良、眼神接觸/肢體語言異常、完全缺乏臉部表情）</li>
+          <li>發展、維繫及了解關係的缺損（調整行為以符合社會情境困難、分享想像遊戲/交友困難、對同儕沒興趣）</li>
+        </ul>
+      </div>
+      <div class="criteria-box info">
+        <div class="criteria-label">準則B — 侷限重複行為、興趣或活動（四項中≥2）</div>
+        <ul class="content-list">
+          <li>刻板或重複的動作、使用物件或言語（簡單刻板動作、排列玩具、仿說、奇異語詞）</li>
+          <li>堅持同一性、固著依循常規或儀式化模式（對微小改變感到極端困擾、僵化思考、固定路徑或食物）</li>
+          <li>高度侷限、固著的興趣（強度或焦點不尋常）</li>
+          <li>感官反應過強或過低（對疼痛/溫度反應淡漠、對特定聲音/材質有不良反應、迷戀光或動作）</li>
+        </ul>
+      </div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在<strong>早期發展階段</strong>出現（可能到社交需求超過受限能力時才完全顯現；或被習得策略掩飾）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">症狀引起臨床上顯著功能減損（社交、職業或其他重要領域）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">E</span><div class="rule-content">無法以智能不足或整體發展遲緩更好解釋。<strong>ASD+智能不足共病</strong>：社交溝通能力應低於一般發展程度預期水平</div></div></div>
+      <div class="criteria-box success">
+        <div class="criteria-label">DSM-IV轉換規則</div>
+        曾診斷DSM-IV自閉症、亞斯伯格症或其他未註明的廣泛性發展障礙症者，皆應給予ASD診斷。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="asd-spec">
+      <h4 class="sub">嚴重程度分級（見表2，依社交溝通減損及限制重複行為）</h4>
+      <table class="compact">
+        <tr><th>等級</th><th>社交溝通</th><th>限制行為</th></tr>
+        <tr><td><span class="tag tag-warn">第三級</span> 需要非常多支援</td><td>嚴重社交缺損；很少開啓互動；對他人社交語言的回應極少</td><td>行為缺乏彈性；非常難應付轉換；明顯干擾功能</td></tr>
+        <tr><td><span class="tag tag-blue">第二級</span> 需要大量支援</td><td>社交缺損明顯；即使有支援亦然；社交互動有限</td><td>行為缺乏彈性；難應付轉換；常見且旁觀者明顯可見</td></tr>
+        <tr><td><span class="tag tag-green">第一級</span> 需要支援</td><td>缺乏支援時，社交溝通缺損造成明顯損傷</td><td>行為缺乏彈性；干擾一個或多個情境；難切換活動</td></tr>
+      </table>
+      <h4 class="sub">其他特別註明</h4>
+      <ul class="content-list">
+        <li>有或無智能減損</li>
+        <li>有或無語言減損</li>
+        <li>有相關的已知身體/遺傳或環境/後天因素</li>
+        <li>有相關的另一神經發展或精神或行為障礙症</li>
+        <li>有或無已習得技能的喪失（退化）</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="asd-feat">
+      <p class="desc">A和B準則的症狀可依過往病史或當下表現滿足（如稍大的兒童以習得策略掩飾社交困難）。症狀出現於早期發展，但可能在社交需求增加時（如學齡）才趨於明顯。</p>
+      <div class="criteria-box warn">
+        <div class="criteria-label">注意</div>
+        有社交溝通缺陷但症狀不符ASD完整準則者（無限制重複行為），應考慮社交（語用）溝通障礙症。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="asd-prev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">~1%</div><div class="stat-label">一般社會大眾盛行率（美國及其他國家）</div></div>
+        <div class="stat-card"><div class="stat-val">4:1</div><div class="stat-label">男:女 診斷比例</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="asd-dev">
+      <ul class="content-list">
+        <li>症狀發病年齡通常在第二或第三年（多數在2歲前被認識）</li>
+        <li>症狀可能在12–18個月或更早出現</li>
+        <li>某些案例有技能退化（通常在24個月前）</li>
+        <li>在支持下，許多人可學習適應；症狀隨時間趨於改善但通常持續終身</li>
+        <li>伴隨智能不足者預後較差</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="asd-risk">
+      <div class="criteria-box info">
+        <div class="criteria-label">遺傳與生理</div>
+        <ul class="content-list">
+          <li>ASD遺傳性高，但多基因遺傳，無單一「ASD基因」</li>
+          <li>手足患ASD風險增加（約10–20倍）</li>
+          <li>相關遺傳症候群：Rett syndrome, Fragile X, TSC</li>
+          <li>環境因素：高齡父母、出生前藥物暴露（valproate）、極低出生體重</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="asd-gender">
+      <p class="desc">男性被診斷ASD的可能性約為女性4倍。然而，女性可能因為有較好的社交模仿能力（「偽裝」）而使症狀不明顯，導致診斷率低估和延遲診斷。女性更常有智能不足共病或更嚴重的症狀時才被識別。</p>
+    </div>
+
+    <div class="tab-panel" id="asd-diff">
+      <div class="important-badge">⭐ 國考重點</div>
+      <div class="diff-item"><div class="diff-name">⭐ Rett Syndrome</div><div class="diff-content">只出現在女性；有已習得技能喪失（手部功能）的特定神經退化病程。社交困難典型只在退化時期；之後可改善。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 選擇性緘默症</div><div class="diff-content">在某些社交情境下缺乏言語。通常有正常的社交溝通技能（只是在特定情境下無法使用）；ASD的社交溝通缺損貫穿所有情境。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 語言障礙症</div><div class="diff-content">語言障礙症不伴隨非語言溝通的異常；亦無侷限的重複行為。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 社交（語用）溝通障礙症</div><div class="diff-content">有社交溝通困難，但<strong>無限制重複行為</strong>；且過往發展史中無任何受限行為/興趣/活動模式。</div></div>
+      <div class="diff-item"><div class="diff-name">智能不足</div><div class="diff-content">若社交溝通缺損不超過整體發展遲緩的程度，不給ASD診斷；共病時社交溝通能力應低於其發展程度預期水平。</div></div>
+      <div class="diff-item"><div class="diff-name">ADHD</div><div class="diff-content">ADHD的注意力缺損可引起社交和溝通困難，但無ASD的社交情緒理解缺損和限制重複行為。</div></div>
+      <div class="diff-item"><div class="diff-name">思覺失調症</div><div class="diff-content">罕見出現在兒童期；若個案有ASD，需有明顯幻覺或妄想期才能加診斷思覺失調症。</div></div>
+    </div>
+
+    <div class="tab-panel" id="asd-comor">
+      <div class="criteria-box info">
+        <div class="criteria-label">常見共病（大多數ASD個案有共病）</div>
+        <ul class="content-list">
+          <li><strong>智能不足</strong>：約30–40%（嚴重智能不足約4–5%）</li>
+          <li>ADHD（極常見）</li>
+          <li>焦慮症（社交焦慮、特定恐懼症）</li>
+          <li>憂鬱症（特別是高功能ASD）</li>
+          <li>癲癇（約20–30%，尤其在智能不足共病者）</li>
+          <li>發展協調障礙症</li>
+          <li>語言障礙症</li>
+          <li>睡眠問題</li>
+          <li>便秘、腸胃問題</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 7. ADHD ══════════════════════════════ -->
+<div class="disorder-section" id="adhd" data-cat="adhd">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">314.xx F90.x</span>
+      <div>
+        <div class="disorder-name">注意力不足／過動症（ADHD）</div>
+        <div class="disorder-name-en">Attention-Deficit/Hyperactivity Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'adhd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-spec')">特別註明/亞型</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-dev')">發展病程</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-risk')">風險預後</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-gender')">性別議題</button>
+      <button class="sec-tab important" onclick="switchTab(this,'adhd-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'adhd-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="adhd-dx">
+      <div class="important-badge">⭐ 國考核心準則</div>
+      <div class="criteria-box info">
+        <div class="criteria-label">準則A — 不專注（I）9項中≥6（17歲以上≥5）</div>
+        <ul class="content-list">
+          <li>經常不注意細節或在學業/工作中粗心犯錯</li>
+          <li>工作或活動時難以持續注意力</li>
+          <li>說話時好像沒在聽</li>
+          <li>無法完成交代（不是故意不服從）</li>
+          <li>難以組織工作和活動</li>
+          <li>逃避、不喜歡、拒絕需要持續專注的工作</li>
+          <li>遺失任務所需物品</li>
+          <li>容易被外部刺激分心</li>
+          <li>在日常活動中健忘</li>
+        </ul>
+      </div>
+      <div class="criteria-box info">
+        <div class="criteria-label">準則A — 過動/衝動（H/I）9項中≥6（17歲以上≥5）</div>
+        <ul class="content-list">
+          <li>手腳常動來動去或坐立不安</li>
+          <li>在需要坐著的情境離開座位</li>
+          <li>在不適當的情況下跑來跑去或爬高（成人：坐立不安的主觀感受）</li>
+          <li>無法安靜地玩或參與休閒活動</li>
+          <li>不停地動，好像「上了發條」</li>
+          <li>話很多</li>
+          <li>問題還沒問完就搶著回答</li>
+          <li>等待輪流有困難</li>
+          <li>常打斷或侵擾他人（插入對話或遊戲）</li>
+        </ul>
+      </div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">幾項不專注或過動/衝動症狀在<strong>12歲以前</strong>出現</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">幾項症狀出現在<strong>兩種或更多環境</strong>（如家庭、學校或工作場所、與朋友或親戚相處時、其他活動中）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">症狀<strong>干擾</strong>或降低社交、學業或職業功能的品質</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">E</span><div class="rule-content">症狀<strong>非</strong>發生在思覺失調症或其他精神疾病的病程中，也無法以其他精神疾病（情緒障礙症、焦慮症、解離症、人格障礙症、物質中毒/戒斷）更好解釋</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="adhd-spec">
+      <h4 class="sub">目前呈現類型</h4>
+      <table class="compact">
+        <tr><th>類型</th><th>ICD</th><th>DSM</th><th>條件</th></tr>
+        <tr><td>合併型</td><td>F90.2</td><td>314.01</td><td>過去6個月，準則A不專注和過動衝動兩者均符合</td></tr>
+        <tr><td>主要不專注型</td><td>F90.0</td><td>314.00</td><td>過去6個月，不專注符合但過動衝動不符合</td></tr>
+        <tr><td>主要過動/衝動型</td><td>F90.1</td><td>314.01</td><td>過去6個月，過動衝動符合但不專注不符合</td></tr>
+      </table>
+      <h4 class="sub">緩解/嚴重度</h4>
+      <ul class="content-list">
+        <li>部分緩解：先前符合完整準則，目前過去6個月少於所需症狀數，但仍有功能損害</li>
+        <li>嚴重度：輕度（只有符合所需症狀，功能輕微損害）、中度、重度（超過所需症狀數，多重情境嚴重損害）</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="adhd-feat">
+      <p class="desc">ADHD是神經發展障礙症，伴隨損傷程度的不專注、缺乏組織化行為，以及/或過動及衝動。症狀必須不符合年齡或發展階段的程度，且出現在多個環境。</p>
+      <div class="criteria-box warn">
+        <div class="criteria-label">重要臨床注意</div>
+        <ul class="content-list">
+          <li>症狀可因高度興趣或喜愛的活動而暫時不出現（個別情境特異性）</li>
+          <li>成人的過動症狀可能表現為「坐立不安」的主觀感受</li>
+          <li>需要評估症狀是否在多個情境均出現（一個情境的報告不足以診斷）</li>
+          <li>適應性學習、認知靈活性及工作記憶等執行功能常受影響</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="adhd-prev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">~5%</div><div class="stat-label">兒童盛行率</div></div>
+        <div class="stat-card"><div class="stat-val">~2.5%</div><div class="stat-label">成人盛行率</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="adhd-dev">
+      <ul class="content-list">
+        <li>學齡前兒童：主要表現過動（難控制）</li>
+        <li>學齡兒童：不專注更明顯，干擾學業；在家中外在症狀更明顯</li>
+        <li>青春期：過動症狀可能減輕或轉為內在坐立不安感</li>
+        <li>成年期：不專注、計畫能力差、衝動問題持續，但外在過動減少</li>
+        <li>症狀通常持續至成年，伴隨社交、學業與工作功能損害</li>
+        <li>兒童期常與對立反抗症（ODD）、行為規範障礙症（CD）共同存在</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="adhd-risk">
+      <div class="criteria-box info">
+        <div class="criteria-label">遺傳與生理</div>
+        <ul class="content-list">
+          <li>高度遺傳性（遺傳率約76%）</li>
+          <li>基因：多基因，涉及多巴胺/正腎上腺素相關基因</li>
+          <li>環境：早產、極低出生體重、胎兒酒精暴露、鉛暴露</li>
+          <li>神經影像：前額葉-紋狀體迴路異常</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="adhd-gender">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">2:1</div><div class="stat-label">兒童 男:女 比例</div></div>
+        <div class="stat-card"><div class="stat-val">1.6:1</div><div class="stat-label">成人 男:女 比例</div></div>
+      </div>
+      <p class="desc">男孩更常表現過動/衝動型；女孩更常表現不專注型。女性ADHD常被低估（症狀較不明顯，評估工具以男性為基準開發）。</p>
+    </div>
+
+    <div class="tab-panel" id="adhd-diff">
+      <div class="important-badge">⭐ 鑑別重點</div>
+      <div class="diff-item"><div class="diff-name">⭐ 對立反抗症（ODD）</div><div class="diff-content">ODD的不服從可能看起來像ADHD的不遵從。ADHD的不遵從因注意力/健忘，非刻意反抗；ODD有明確的對立、憤怒、報復模式。兩者可共病。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 憂鬱症</div><div class="diff-content">憂鬱症可造成注意力困難和躁動不安。ADHD症狀在12歲前就出現且不侷限在憂鬱期；憂鬱症的注意力問題隨情緒起伏。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 焦慮症</div><div class="diff-content">焦慮可造成注意力渙散（分心於擔憂）和不安。ADHD的注意力問題不限於擔憂情境。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 躁鬱症</div><div class="diff-content">躁期可有活動量增加、衝動、說話多、注意力散漫。關鍵：躁鬱症症狀有週期性（發作-間歇）；ADHD症狀持續存在；兒童期早發型躁症診斷需謹慎。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ ASD</div><div class="diff-content">ASD可有注意力問題，但伴隨社交溝通缺損和限制重複行為。兩者可共病。</div></div>
+      <div class="diff-item"><div class="diff-name">特定學習障礙症</div><div class="diff-content">特定學習障礙症的學業問題限於特定學科領域，而非廣泛注意力問題；兩者可共病。</div></div>
+      <div class="diff-item"><div class="diff-name">智能不足</div><div class="diff-content">不専注和過動可見於智能不足，但若超過其智能發展程度，且符合ADHD準則，可給予共病診斷。</div></div>
+      <div class="diff-item"><div class="diff-name">物質使用障礙症</div><div class="diff-content">某些物質（大麻、酒精）可導致注意力和認知問題。ADHD的症狀在12歲前就出現。</div></div>
+    </div>
+
+    <div class="tab-panel" id="adhd-comor">
+      <ul class="content-list">
+        <li>對立反抗症（ODD）：約50%的ADHD兒童</li>
+        <li>行為規範障礙症（CD）：約25%</li>
+        <li>特定學習障礙症（非常常見共病）</li>
+        <li>焦慮症（約30–40%）</li>
+        <li>憂鬱症（約20–30%）</li>
+        <li>ASD（可共病）</li>
+        <li>智能不足（可共病）</li>
+        <li>發展協調障礙症</li>
+        <li>物質使用障礙症（青少年/成人）</li>
+        <li>睡眠問題</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 8. 特定學習障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="sld" data-cat="sld">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.xx F81.x</span>
+      <div>
+        <div class="disorder-name">特定學習障礙症</div>
+        <div class="disorder-name-en">Specific Learning Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'sld-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'sld-spec')">特別註明</button>
+      <button class="sec-tab" onclick="switchTab(this,'sld-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'sld-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'sld-dev')">發展病程</button>
+      <button class="sec-tab important" onclick="switchTab(this,'sld-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'sld-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="sld-dx">
+      <div class="important-badge">⭐ A需有≥1項，且持續≥6個月</div>
+      <div class="criteria-box info">
+        <div class="criteria-label">準則A — 學習和使用學業技巧持續困難（6項中≥1，且持續≥6個月，即使提供介入）</div>
+        <ul class="content-list">
+          <li>不正確或緩慢且費力地閱讀單字（大聲朗讀時，不正確、緩慢、猶豫或常猜測）</li>
+          <li>理解閱讀意義困難（可能正確朗讀，但不理解順序、關係、推論或深層意義）</li>
+          <li>拼字困難（可能增加、省略或替換母音或子音）</li>
+          <li>書寫表達困難（在句子中有多個文法或標點錯誤；段落組織差；缺乏清晰的書寫表達）</li>
+          <li>數字概念、數字事實或計算困難（數字及其關係理解差；計算錯誤）</li>
+          <li>數學推理困難（應用數學概念、事實或程序解決數量問題困難）</li>
+        </ul>
+      </div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">受影響的學業技巧顯著且可量化地低於個案實際年齡應有的水準，且造成學業/職業表現或日常生活活動的顯著干擾（由標準化測量及完整臨床評估確認；17歲以上可用有記錄的學習障礙史代替標準化評估）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">學習困難在學齡期開始，但可能到學業要求超過個人有限能力時才完全顯現</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">學習困難無法以智能不足、視力/聽力問題、其他精神/神經疾患、心理社會逆境、語言教學不足、或不適當教育指導更好解釋</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="sld-spec">
+      <table class="compact">
+        <tr><th>特別註明</th><th>DSM碼</th><th>ICD</th></tr>
+        <tr><td>伴隨閱讀損傷（閱讀障礙/dyslexia）</td><td>315.00</td><td>F81.0</td></tr>
+        <tr><td>伴隨書寫表達損傷</td><td>315.2</td><td>F81.81</td></tr>
+        <tr><td>伴隨數學損傷（算術障礙/dyscalculia）</td><td>315.1</td><td>F81.2</td></tr>
+      </table>
+      <div class="criteria-box info">
+        <div class="criteria-label">嚴重度</div>
+        <ul class="content-list">
+          <li>輕度：一兩個學業領域，補償策略或支援可正常功能</li>
+          <li>中度：一個或多個學業領域，無密集特殊教育難有好表現</li>
+          <li>重度：影響多個學業領域，若無密集且持續的特殊教育，無法獲得有效率的技能</li>
+        </ul>
+      </div>
+      <div class="criteria-box warn">
+        <div class="criteria-label">注意</div>
+        「閱讀障礙」和「算術障礙」是可使用的臨床術語，但不是DSM-5的正式診斷名稱（須加上特別註明的方式記錄）。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="sld-feat">
+      <p class="desc">在智能正常的個案也可出現特定學習障礙症（可在資優生中出現）。只有當學習要求或評估方法增加困難度（如限時測驗），使個案無法以先天智能和代償策略克服時，才會顯現症狀。</p>
+      <div class="criteria-box info">
+        <div class="criteria-label">評估需考量</div>
+        <ul class="content-list">
+          <li>個案的文化和語言背景</li>
+          <li>由正式標準化評估和完整臨床訪談確認</li>
+          <li>不可只依賴單一測驗分數</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="sld-prev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">5–15%</div><div class="stat-label">學齡兒童盛行率（不同學業領域）</div></div>
+        <div class="stat-card"><div class="stat-val">~4%</div><div class="stat-label">成人盛行率</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="sld-dev">
+      <p class="desc">始於學齡階段，但可能到學業要求超過個人能力時才完全顯現（如進入高中或大學）。若未接受適當介入，特定學習障礙症的功能損害可能延續至成人期，造成依賴技巧的工作表現問題。</p>
+    </div>
+
+    <div class="tab-panel" id="sld-diff">
+      <div class="diff-item"><div class="diff-name">⭐ 正常學習差異</div><div class="diff-content">正常個體差異（非障礙）；教育機會不足或文化語言差異（方言、雙語）；課程內容困難度超過一般程度。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 智能不足</div><div class="diff-content">智能不足造成所有學業領域困難，非特定領域；特定學習障礙症不能以智能不足更好解釋（若IQ<70, 優先診斷智能不足）。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ ADHD</div><div class="diff-content">ADHD的學業困難源於注意力/執行功能問題，影響廣泛，非侷限於特定學業技巧。兩者可共病。</div></div>
+      <div class="diff-item"><div class="diff-name">神經或感覺障礙</div><div class="diff-content">視力/聽力問題、神經疾患（如腦性麻痺、癲癇）可造成學習困難，需先排除。</div></div>
+      <div class="diff-item"><div class="diff-name">心理社會逆境</div><div class="diff-content">經濟弱勢、不適當教育、學習機會缺乏可造成學習困難，但排除後若困難持續，才考慮特定學習障礙症。</div></div>
+    </div>
+
+    <div class="tab-panel" id="sld-comor">
+      <ul class="content-list">
+        <li>ADHD（最常見共病，約30–70%）</li>
+        <li>語言障礙症</li>
+        <li>發展協調障礙症</li>
+        <li>焦慮症（尤其是學業相關焦慮）</li>
+        <li>憂鬱症（因學業挫敗）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 9. 動作協調發展障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="dcd" data-cat="motor">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">315.4 F82</span>
+      <div>
+        <div class="disorder-name">動作協調發展障礙症</div>
+        <div class="disorder-name-en">Developmental Coordination Disorder (DCD)</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'dcd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'dcd-feat')">診斷特質</button>
+      <button class="sec-tab" onclick="switchTab(this,'dcd-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'dcd-dev')">發展病程</button>
+      <button class="sec-tab important" onclick="switchTab(this,'dcd-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'dcd-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="dcd-dx">
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">動作協調技巧的習得和執行顯著低於實際年齡和技巧學習及使用的機會所應有的程度（笨拙、緩慢或不準確的動作技巧表現）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">準則A的動作技巧缺損顯著且持久地干擾日常生活活動（如照顧自己、自我維護）和學業/學校生產力、職前及職業活動、休閒及玩耍</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">症狀在早期發展階段開始</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">動作技巧缺損無法以智能不足或視覺損傷更好解釋，且不能歸因於影響動作的神經疾患（如腦性麻痺、肌肉萎縮症、退化性疾患）</div></div></div>
+    </div>
+
+    <div class="tab-panel" id="dcd-feat">
+      <p class="desc">表現包括：抓握物體不穩、剪刀使用困難、書寫不整齊、運動技能差（騎自行車、游泳）、自我照顧困難（扣扣子、穿鞋帶）。可能有遲緩的動作里程碑達成。</p>
+    </div>
+
+    <div class="tab-panel" id="dcd-prev">
+      <div class="stat-card"><div class="stat-val">5–6%</div><div class="stat-label">5–11歲學齡兒童盛行率</div></div>
+    </div>
+
+    <div class="tab-panel" id="dcd-dev">
+      <p class="desc">症狀在早期發展出現（通常5–6歲前可確認）。病程通常持續，雖某些個案隨年齡增長可改善。影響可延伸至青少年和成人期（體育、書寫、職業表現）。</p>
+    </div>
+
+    <div class="tab-panel" id="dcd-diff">
+      <div class="diff-item"><div class="diff-name">⭐ 動作損傷的醫學狀況</div><div class="diff-content">腦性麻痺、肌肉萎縮症：有神經學檢查發現可以解釋動作損傷，不診斷DCD（除非嚴重程度超過神經疾患的預期程度）。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 智能不足</div><div class="diff-content">智能不足可伴隨動作協調困難，通常不給額外DCD診斷，除非動作困難明顯超過其智能程度。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ ADHD</div><div class="diff-content">ADHD可導致過動和衝動，干擾動作表現，但DCD的動作協調困難在安靜情境也存在，且不限於注意力問題。兩者可共病。</div></div>
+      <div class="diff-item"><div class="diff-name">ASD</div><div class="diff-content">ASD可有動作困難，兩者可共病。</div></div>
+    </div>
+
+    <div class="tab-panel" id="dcd-comor">
+      <ul class="content-list">
+        <li>ADHD（最常見共病，約50%）</li>
+        <li>特定學習障礙症（尤其是閱讀和書寫）</li>
+        <li>語言障礙症</li>
+        <li>ASD</li>
+        <li>焦慮症</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 10. 重複動作障礙症 ══════════════════════════════ -->
+<div class="disorder-section" id="smd" data-cat="motor">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">307.3 F98.4</span>
+      <div>
+        <div class="disorder-name">重複動作障礙症</div>
+        <div class="disorder-name-en">Stereotypic Movement Disorder</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'smd-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab important" onclick="switchTab(this,'smd-diff')">⭐ 鑑別診斷</button>
+    </div>
+
+    <div class="tab-panel active" id="smd-dx">
+      <div class="rule"><div class="rule-row"><span class="rule-letter">A</span><div class="rule-content">重複性、似乎是被驅使的（driven）、且明顯無目的的動作行為（如手甩動或揮舞、身體搖動、撞頭、咬或打自己的身體）</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">B</span><div class="rule-content">重複動作行為干擾社會、學業或其他活動，可能導致自我傷害</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter">C</span><div class="rule-content">早期發展階段開始</div></div></div>
+      <div class="rule"><div class="rule-row"><span class="rule-letter warn">D</span><div class="rule-content">重複動作行為不能歸因於物質（如：興奮劑）的生理效應或其他神經疾患（亨丁頓病、萊希-尼亨症候群），也無法以強迫症、創傷後壓力症、拔毛症（拔毛障礙症）、搔皮障礙症或刻板印象/習慣運動更好解釋</div></div></div>
+      <div class="criteria-box info">
+        <div class="criteria-label">特別註明</div>
+        <ul class="content-list">
+          <li>有/無自傷行為（若有，記錄嚴重度）</li>
+          <li>與已知醫療或遺傳狀況、神經發展障礙症或環境因素相關</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="smd-diff">
+      <div class="diff-item"><div class="diff-name">⭐ 強迫症</div><div class="diff-content">強迫症的儀式行為有強迫觀念驅動並試圖減少焦慮；刻板動作無這樣的認知成分。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 抽搐症</div><div class="diff-content">抽搐：突然、快速、非規律節奏、刻板；通常分佈於頭/頸。刻板動作：更有節奏性、更複雜、能被「保持」更長時間；且在分心時常停止但抽搐不會。</div></div>
+      <div class="diff-item"><div class="diff-name">ASD</div><div class="diff-content">ASD的重複動作（如手搖晃）類似，但ASD有社交溝通缺損。若符合ASD，優先診斷ASD；若重複動作嚴重需獨立關注，可另診斷重複動作障礙症。</div></div>
+      <div class="diff-item"><div class="diff-name">正常發展中的刻板動作</div><div class="diff-content">許多正常兒童有重複動作（如搖來搖去、跳躍、旋轉）；若不干擾功能或造成傷害，不符合診斷。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 11. 抽搐症 ══════════════════════════════ -->
+<div class="disorder-section" id="tic" data-cat="motor">
+  <div class="disorder-header" onclick="toggleDisorder(this)">
+    <div class="disorder-header-left">
+      <span class="disorder-num">307.23 / 307.22 / 307.21</span>
+      <div>
+        <div class="disorder-name">抽搐症（妥瑞氏症、持續型、暫時型）</div>
+        <div class="disorder-name-en">Tic Disorders (Tourette's / Persistent / Provisional)</div>
+      </div>
+    </div>
+    <button class="collapse-btn open">▾</button>
+  </div>
+  <div class="disorder-body">
+    <div class="section-tabs">
+      <button class="sec-tab important active" onclick="switchTab(this,'tic-dx')">⭐ 診斷準則</button>
+      <button class="sec-tab" onclick="switchTab(this,'tic-prev')">盛行率</button>
+      <button class="sec-tab" onclick="switchTab(this,'tic-dev')">發展病程</button>
+      <button class="sec-tab important" onclick="switchTab(this,'tic-diff')">⭐ 鑑別診斷</button>
+      <button class="sec-tab" onclick="switchTab(this,'tic-comor')">共病</button>
+    </div>
+
+    <div class="tab-panel active" id="tic-dx">
+      <div class="important-badge">⭐ 抽搐症分類比較</div>
+      <div class="info-banner"><strong>抽搐定義</strong>：突然、快速、重覆發生、非規律節奏、重覆刻板的動作或發聲</div>
+      <table class="compact">
+        <tr><th>診斷</th><th>DSM/ICD</th><th>條件</th></tr>
+        <tr>
+          <td><strong>妥瑞氏症</strong><br>Tourette's Disorder</td>
+          <td>307.23 F95.2</td>
+          <td>
+            A. 多重動作抽搐和≥1個發聲抽搐（不需同時）<br>
+            B. 症狀持續超過<strong>1年</strong>（頻率起伏）<br>
+            C. 18歲前出現<br>
+            D. 非物質/其他醫療狀況所致
+          </td>
+        </tr>
+        <tr>
+          <td><strong>持續（慢性）動作或發聲抽搐症</strong></td>
+          <td>307.22 F95.1</td>
+          <td>
+            A. 單一或多重動作或發聲抽搐（<strong>非兩者兼有</strong>）<br>
+            B. 症狀持續超過<strong>1年</strong>（頻率起伏）<br>
+            C. 18歲前出現；D. 非物質所致；E. 從未符合妥瑞氏症
+          </td>
+        </tr>
+        <tr>
+          <td><strong>暫時性抽搐症</strong><br>Provisional Tic Disorder</td>
+          <td>307.21 F95.0</td>
+          <td>
+            A. 單一或多重動作和/或發聲抽搐<br>
+            B. 症狀持續<strong>不超過1年</strong><br>
+            C. 18歲前出現；D. 非物質所致；E. 從未符合妥瑞氏症或持續型
+          </td>
+        </tr>
+      </table>
+      <div class="criteria-box warn">
+        <div class="criteria-label">重要順序規則</div>
+        若符合妥瑞氏症，<strong>不</strong>診斷持續型或暫時型；若符合持續型，<strong>不</strong>診斷暫時型。
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tic-prev">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-val">0.3–0.8%</div><div class="stat-label">妥瑞氏症盛行率</div></div>
+        <div class="stat-card"><div class="stat-val">20%</div><div class="stat-label">學齡兒童暫時性抽搐盛行率</div></div>
+        <div class="stat-card"><div class="stat-val">3–4:1</div><div class="stat-label">妥瑞氏症 男:女 比</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tic-dev">
+      <ul class="content-list">
+        <li>典型在4–6歲出現；平均在6–7歲被注意到</li>
+        <li>動作抽搐通常早於發聲抽搐出現</li>
+        <li>在青春期前（約10–12歲）症狀最嚴重</li>
+        <li>青春期後症狀常減輕；許多成人症狀最小化</li>
+        <li>抽搐可因壓力、焦慮、疲勞加重；在睡眠時可能繼續</li>
+        <li>多數人可短暫抑制抽搐，但之後可能反彈</li>
+      </ul>
+    </div>
+
+    <div class="tab-panel" id="tic-diff">
+      <div class="diff-item"><div class="diff-name">⭐ 重複動作障礙症</div><div class="diff-content">刻板動作更有節奏性、更複雜；分心時常停止；可持續維持更長時間。抽搐更為突然、非節奏性。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 強迫症</div><div class="diff-content">強迫行為由強迫觀念驅動，旨在減少焦慮；抽搐有「要動的衝動」（premonitory urge）而非強迫觀念。兩者可共病（妥瑞氏症+OCD）。</div></div>
+      <div class="diff-item"><div class="diff-name">⭐ 兒童期初發型語暢障礙症（口吃）</div><div class="diff-content">口吃的重複性發音需與妥瑞氏症的發聲抽搐（如回音語、穢語症）區分。</div></div>
+      <div class="diff-item"><div class="diff-name">藥物誘發的動作障礙</div><div class="diff-content">抗精神病藥物或其他藥物可導致遲發性運動障礙（tardive dyskinesia），需根據藥物史鑑別。</div></div>
+    </div>
+
+    <div class="tab-panel" id="tic-comor">
+      <ul class="content-list">
+        <li>ADHD（最常見，50–90%妥瑞氏症有ADHD症狀）</li>
+        <li>強迫症（OCD）：約20–60%</li>
+        <li>特定學習障礙症</li>
+        <li>焦慮症</li>
+        <li>憂鬱症</li>
+        <li>睡眠問題</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+function toggleDisorder(header) {
+  const body = header.nextElementSibling;
+  const btn = header.querySelector('.collapse-btn');
+  const isHidden = body.classList.contains('hidden');
+  body.classList.toggle('hidden', !isHidden);
+  btn.classList.toggle('open', isHidden);
+}
+
+function switchTab(tabBtn, panelId) {
+  // Find the disorder section
+  const section = tabBtn.closest('.disorder-section');
+  // Deactivate all tabs and panels in this section
+  section.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('active'));
+  section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  // Activate clicked tab and its panel
+  tabBtn.classList.add('active');
+  const panel = section.querySelector('#' + panelId);
+  if (panel) panel.classList.add('active');
+}
+
+function filterDisorder(cat) {
+  document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.disorder-section').forEach(s => {
+    if (cat === 'all') {
+      s.style.display = '';
+    } else {
+      s.style.display = s.dataset.cat === cat ? '' : 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
